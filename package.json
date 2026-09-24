@@ -1,0 +1,16 @@
+{
+  "name": "emergency-mail-creator",
+  "private": true,
+  "description": "Static website that creates alarm printouts (PDF) and Leitstelle mail texts. Only needed for checks and tests; the site itself has no build step.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "validate": "npx --yes ajv-cli@5.0.0 validate --spec=draft2020 --strict=true -s vehicles.schema.json -d vehicles.json && npx --yes ajv-cli@5.0.0 validate --spec=draft2020 --strict=true -s keywords.schema.json -r vehicles.schema.json -d keywords.json",
+    "check-data": "node scripts/check-data.mjs",
+    "test": "node --test",
+    "check": "npm run validate && npm run check-data && npm test",
+    "serve": "python3 -m http.server 8000"
+  }
+}

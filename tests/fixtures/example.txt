@@ -1,0 +1,21 @@
+~~Ort~~Kleinmachnow~~
+~~Ortsteil~~~~
+~~Ortslage~~~~
+~~Strasse~~Am Bannwald~~
+~~Hausnummer~~1~~
+~~Objekt~~Feuerwache Kleinmachnow~~
+~~FWPlan~~0101000~~
+~~Objektteil~~~~
+~~Objektnummer~~1~~
+~~Einsatzart~~Brandeinsatz~~
+~~Alarmgrund~~B:Gebäude-Groß~~
+~~Sondersignal~~mit Sondersignal~~
+~~Einsatznummer~~12341234~~
+~~Besonderheiten~~Flammen weit sichtbar. Personen unklar.~~
+~~Name~~Förster,Felix~~
+~~EMListe~~FL PM 01/11-01, FL PM 01/44-01~~
+~~Status~~Tableau-Adresse~~Wache~~Fahrzeug~~Alarmiert~~Ausgerückt~~
+~~ALARM~~unbekannt#~~PM FW Kleinmachnowø~~FL PM 01/44-01~~19:10~~~~
+~~ALARM~~unbekannt#~~PM FW Kleinmachnowø~~FL PM 01/11-01~~19:12~~~~
+~~Einsatzortzusatz~~Hydrant H100 an der Einfahrt~~
+~~Alarmzeit~~08.07.26&19:10~~

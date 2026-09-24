@@ -1,0 +1,155 @@
+{
+  "keyword": "B:Gebäude-Groß",
+  "blueLights": true,
+  "number": "12341234",
+  "alarmTime": "2026-07-08T19:10",
+  "location": {
+    "town": "Kleinmachnow",
+    "district": "",
+    "locality": "",
+    "street": "Am Bannwald",
+    "houseNumber": "1",
+    "addition": "Hydrant H100 an der Einfahrt"
+  },
+  "object": {
+    "name": "Feuerwache Kleinmachnow",
+    "part": "",
+    "number": "1",
+    "fwPlan": "0101000"
+  },
+  "patient": {
+    "firstName": "Felix",
+    "lastName": "Förster"
+  },
+  "note": "Flammen weit sichtbar. Personen unklar.",
+  "units": [
+    {
+      "radioId": "FL PM 03/44-01",
+      "station": "PM FW Teltow",
+      "name": "",
+      "alarmTime": null,
+      "source": "manual",
+      "touched": false
+    },
+    {
+      "radioId": "FL PM 01/01-01",
+      "station": "PM AMT Kleinmachnow",
+      "name": "GWF Kleinmachnow",
+      "alarmTime": null,
+      "source": "manual",
+      "touched": false
+    },
+    {
+      "radioId": "FL PM 01/10-01",
+      "station": "PM FW Kleinmachnow",
+      "name": "KdoW Kleinmachnow",
+      "alarmTime": null,
+      "source": "manual",
+      "touched": false
+    },
+    {
+      "radioId": "FL PM 01/11-01",
+      "station": "PM FW Kleinmachnow",
+      "name": "ELW 1 Kleinmachnow",
+      "alarmTime": null,
+      "source": "manual",
+      "touched": false
+    },
+    {
+      "radioId": "FL PM 01/23-01",
+      "station": "PM FW Kleinmachnow",
+      "name": "",
+      "alarmTime": null,
+      "source": "manual",
+      "touched": false
+    },
+    {
+      "radioId": "FL PM 01/36-01",
+      "station": "PM FW Kleinmachnow",
+      "name": "TGM 32 Kleinmachnow",
+      "alarmTime": null,
+      "source": "manual",
+      "touched": false
+    },
+    {
+      "radioId": "FL PM 01/42-01",
+      "station": "PM FW Kleinmachnow",
+      "name": "MLF RS Kleinmachnow",
+      "alarmTime": null,
+      "source": "manual",
+      "touched": false
+    },
+    {
+      "radioId": "FL PM 01/43-01",
+      "station": "PM FW Kleinmachnow",
+      "name": "HLF 20 RS Kleinmachnow",
+      "alarmTime": null,
+      "source": "manual",
+      "touched": false
+    },
+    {
+      "radioId": "FL PM 01/44-01",
+      "station": "PM FW Kleinmachnow",
+      "name": "LF 20 RS Kleinmachnow",
+      "alarmTime": null,
+      "source": "manual",
+      "touched": false
+    },
+    {
+      "radioId": "FL PM 01/59-01",
+      "station": "PM FW Kleinmachnow",
+      "name": "GW-T Kleinmachnow",
+      "alarmTime": null,
+      "source": "manual",
+      "touched": false
+    },
+    {
+      "radioId": "FL PM 01/65-01",
+      "station": "PM FW Kleinmachnow",
+      "name": "",
+      "alarmTime": null,
+      "source": "manual",
+      "touched": false
+    },
+    {
+      "radioId": "FL PM 01/79-01",
+      "station": "PM FW Kleinmachnow",
+      "name": "MZB Kleinmachnow",
+      "alarmTime": null,
+      "source": "manual",
+      "touched": false
+    },
+    {
+      "radioId": "FL PM 01/84-01",
+      "station": "PM FW Kleinmachnow",
+      "name": "",
+      "alarmTime": null,
+      "source": "manual",
+      "touched": false
+    },
+    {
+      "radioId": "FL PM 01/85-01",
+      "station": "PM FW Kleinmachnow",
+      "name": "RTW FR Kleinmachnow",
+      "alarmTime": null,
+      "source": "manual",
+      "touched": false
+    },
+    {
+      "radioId": "FL PM 03/33-01",
+      "station": "PM FW Teltow",
+      "name": "",
+      "alarmTime": null,
+      "source": "manual",
+      "touched": false
+    },
+    {
+      "radioId": "RT PM 03/83-01",
+      "station": "PM RW Teltow",
+      "name": "",
+      "alarmTime": null,
+      "source": "manual",
+      "touched": false
+    }
+  ]
+}

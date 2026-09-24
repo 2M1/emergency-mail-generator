@@ -1,0 +1,58 @@
+~~Ort~~Kleinmachnow~~
+~~Ortsteil~~Dreilinden~~
+~~Ortslage~~Zentrum~~
+~~Strasse~~Am Bannwald~~
+~~Hausnummer~~1~~
+~~Objekt~~Feuerwache Kleinmachnow~~
+~~FWPlan~~0101000~~
+~~Objektteil~~Garagen~~
+~~Objektnummer~~20~~
+~~Einsatzart~~Brandeinsatz~~
+~~Alarmgrund~~B:Gebäude-Groß~~
+~~Sondersignal~~mit Sondersignal~~
+~~Einsatznummer~~12341234~~
+~~Besonderheiten~~TestTestTest This is a very long description that should be split among multiple lines if it is no trouble... Pleas continue reading this as multiple lines. Go on now go go go~~
+~~Name~~S.,A.~~
+~~EMListe~~FL PM 01/01-01, FL PM 01/10-01, FL PM 01/11-01, FL PM 01/23-01, FL PM 01/36-01, FL PM 01/42-01, FL PM 01/43-01, FL PM 01/44-01, FL PM 01/59-01, FL PM 01/65-01, FL PM 01/79-01, FL PM 01/84-01, FL PM 01/85-01, FL PM 03/33-01, FL PM 03/44-01, RT PM 03/83-01, RT PM 03/83-02, RT PM 03/83-03, RT PM 03/83-04, RT PM 03/83-05, RT PM 03/83-06, RT PM 03/83-07, RT PM 03/83-08, RT PM 03/83-09, RT PM 03/83-10, RT PM 03/83-11, RT PM 03/83-12, RT PM 03/83-13, RT PM 03/83-14, RT PM 03/83-15, RT PM 03/83-16, RT PM 03/83-17, RT PM 03/83-18, RT PM 03/83-19~~
+~~Status~~Tableau-Adresse~~Wache~~Fahrzeug~~Alarmiert~~Ausgerückt~~
+~~ALARM~~unbekannt#~~PM AMT Kleinmachnowø~~FL PM 01/01-01~~00:01~~~~
+~~ALARM~~unbekannt#~~PM FW Kleinmachnowø~~FL PM 01/10-01~~00:02~~~~
+~~ALARM~~unbekannt#~~PM FW Kleinmachnowø~~FL PM 01/11-01~~00:03~~~~
+~~ALARM~~unbekannt#~~PM FW Kleinmachnowø~~FL PM 01/23-01~~00:04~~~~
+~~ALARM~~unbekannt#~~PM FW Kleinmachnowø~~FL PM 01/36-01~~00:05~~~~
+~~ALARM~~unbekannt#~~PM FW Kleinmachnowø~~FL PM 01/42-01~~00:06~~~~
+~~ALARM~~unbekannt#~~PM FW Kleinmachnowø~~FL PM 01/43-01~~00:07~~~~
+~~ALARM~~unbekannt#~~PM FW Kleinmachnowø~~FL PM 01/44-01~~00:08~~~~
+~~ALARM~~unbekannt#~~PM FW Kleinmachnowø~~FL PM 01/59-01~~00:09~~~~
+~~ALARM~~unbekannt#~~PM FW Kleinmachnowø~~FL PM 01/65-01~~00:10~~~~
+~~ALARM~~unbekannt#~~PM FW Kleinmachnowø~~FL PM 01/79-01~~00:12~~~~
+~~ALARM~~unbekannt#~~PM FW Kleinmachnowø~~FL PM 01/84-01~~00:11~~~~
+~~ALARM~~unbekannt#~~PM FW Kleinmachnowø~~FL PM 01/85-01~~00:11~~~~
+~~ALARM~~unbekannt#~~PM FW Teltowø~~FL PM 03/33-01~~00:13~~~~
+~~ALARM~~unbekannt#~~PM FW Teltowø~~FL PM 03/44-01~~00:14~~~~
+~~ALARM~~unbekannt#~~PM RW Teltowø~~RT PM 03/83-01~~00:15~~~~
+~~ALARM~~unbekannt#~~PM RW Teltowø~~RT PM 03/83-02~~00:15~~~~
+~~ALARM~~unbekannt#~~PM RW Teltowø~~RT PM 03/83-03~~00:15~~~~
+~~ALARM~~unbekannt#~~PM RW Teltowø~~RT PM 03/83-04~~00:15~~~~
+~~ALARM~~unbekannt#~~PM RW Teltowø~~RT PM 03/83-05~~00:15~~~~
+~~ALARM~~unbekannt#~~PM RW Teltowø~~RT PM 03/83-06~~00:15~~~~
+~~ALARM~~unbekannt#~~PM RW Teltowø~~RT PM 03/83-07~~00:15~~~~
+~~ALARM~~unbekannt#~~PM RW Teltowø~~RT PM 03/83-01~~00:15~~~~
+~~ALARM~~unbekannt#~~PM RW Teltowø~~RT PM 03/83-08~~00:15~~~~
+~~ALARM~~unbekannt#~~PM RW Teltowø~~RT PM 03/83-09~~00:15~~~~
+~~ALARM~~unbekannt#~~PM RW Teltowø~~RT PM 03/83-10~~00:15~~~~
+~~ALARM~~unbekannt#~~PM RW Teltowø~~RT PM 03/83-11~~00:15~~~~
+~~ALARM~~unbekannt#~~PM RW Teltowø~~RT PM 03/83-12~~00:15~~~~
+~~ALARM~~unbekannt#~~PM RW Teltowø~~RT PM 03/83-13~~00:15~~~~
+~~ALARM~~unbekannt#~~PM RW Teltowø~~RT PM 03/83-14~~00:15~~~~
+~~ALARM~~unbekannt#~~PM RW Teltowø~~RT PM 03/83-15~~00:15~~~~
+~~ALARM~~unbekannt#~~PM RW Teltowø~~RT PM 03/83-16~~00:15~~~~
+~~ALARM~~unbekannt#~~PM RW Teltowø~~RT PM 03/83-17~~00:15~~~~
+~~ALARM~~unbekannt#~~PM RW Teltowø~~RT PM 03/83-18~~00:15~~~~
+~~ALARM~~unbekannt#~~PM RW Teltowø~~RT PM 03/83-19~~00:15~~~~
+~~WGS84_X~~52.0~~
+~~WGS84_Y~~13.0~~
+~~Koord_EPSG_25833~~13.0~~52.0~~
+~~Koord_EPSG_4326~~E00~~N00~~
+~~Einsatzortzusatz~~Hydrant DN5000 100km südlich~~
+~~Alarmzeit~~06.08.23&00:00~~

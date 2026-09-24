@@ -17,7 +17,7 @@ Reference plan for building the website described in [CLAUDE.md](CLAUDE.md). It 
 
 ### Open points
 
-- Do `Flugzeugunfall` and `Gefahrgut` also take a hyphen at the Leitstelle (`H:Gefahrgut-Klein`)? Only `B:Gebäude-Groß` is confirmed by a real mail. They are currently written with a space.
+- Does `Flugzeugunfall` also take a hyphen at the Leitstelle (`H:Flugzeugunfall-Klein`)? Only `B:Gebäude-Groß` is confirmed by a real mail. `keywords.json` now has `H:Gefahrgut-Klein`/`-Groß` with a hyphen and `H:Flugzeugunfall Klein`/`Groß` with a space.
 
 ## Outputs
 
@@ -48,7 +48,8 @@ The line format that `../emergency_mail/src/models/emergency_parsing.rs` reads: 
 | `Einsatzortzusatz` | location.addition | empty allowed |
 | `Alarmzeit` | alarmTime | `dd.mm.yy&HH:MM` |
 
-- With no units, write a single empty row, `~~ALARM~~#~~ø~~~~~~`, as real mails do.
+- With no units, write a single empty row, `~~ALARM~~#~~ø~~~~~~`, as real mails do (`../emergency_mail/examples/emergency_obj.txt`).
+- Units without a radio ID (a row still being typed) are left out of the mail and the PDF.
 - The trailing `ø` after the Wache and `unbekannt#` in the first column copy the real Leitstelle format. The Rust parser strips the `ø`.
 - A unit's ALARM time is its own override if set, otherwise the emergency's alarm time (`HH:MM`).
 - `~` is removed from every input value because it is the field delimiter.
@@ -109,8 +110,9 @@ All measurements below are in mm, with the origin at the top left. Text `y` valu
 
 After a single-line label: `y = end of value + 1.2·LH`. After a two-line label (Objekt, sonst. Ortsangaben): `y = max(end of label, end of value) + 5`.
 
+**Divider** after the details, always (as in Rust): from x 15 to 195 at y, then `y += 1.2·LH`.
+
 **Hinweise** (only when the note is not empty)
-- Divider from x 15 to 195 at y, then `y += 1.2·LH`.
 - `Hinweise` (bold) at x = 15, then `y += 1.5·LH`.
 - Note text at x = 18, wrapped.
 - Divider, then `y += 1.2·LH`.
@@ -126,7 +128,9 @@ After a single-line label: `y = end of value + 1.2·LH`. After a two-line label 
 
 **Metadata and file names**
 - PDF title: `Einsatz am YYYY-MM-DD um HH:MM:00`.
-- Downloads: `YYYY-MM-DD_HH-MM_<Stichwort with ':' → '-'>.pdf` and the same name with `.txt` for the mail text.
+- Downloads: `YYYY-MM-DD_HH-MM_<Stichwort>.pdf` and the same name with `.txt` for the mail text. Characters Windows forbids in file names (`\ / : * ? " < > |`, e.g. in `B:Wald Groß/WSP`) become `-`.
+- Fonts are embedded without subsetting: pdf-lib's subsetting drops glyph outlines of PT Serif Regular. The PDF is about 290 KB.
+- The logo is 48 × 48 pt (16.93 mm) at x = 142, bottom edge at y = 41.5, measured in test.pdf.
 
 #### Deviations from the Rust PDF
 
@@ -134,13 +138,15 @@ After a single-line label: `y = end of value + 1.2·LH`. After a two-line label 
 - Long text wraps at word boundaries using the measured text width. Rust splits every 80 characters, even mid-word.
 - No leading space before the patient name.
 - The table header row is repeated on page 2.
+- A long note or unit list continues on as many pages as needed (Rust assumes everything fits on two pages). If not even the table header and one row fit on the current page, the table starts on the next one.
 
 ## Architecture
 
 Plain ES modules with no framework and no build step. Libraries are copied into `vendor/` at pinned versions, so the site doesn't depend on a CDN:
 
-- `pdf-lib` 1.17.1: PDF creation
-- `@pdf-lib/fontkit` 1.1.1: embedding PT Serif (umlauts, subsetting)
+- `pdf-lib` 1.17.1: PDF creation (loaded on the first PDF download)
+- `@pdf-lib/fontkit` 1.1.1: embedding and measuring PT Serif (umlauts)
+- `pako` 2.1.0: fontkit's only dependency. fontkit's `import "pako"` is rewritten to the vendored file, because browsers can't resolve bare imports ([vendor/README.md](vendor/README.md), `scripts/vendor.sh`).
 
 One layout engine feeds two renderers, so the preview and the download can't drift apart:
 
@@ -152,6 +158,7 @@ state ──► mail.js    toMailText(state)       → string
 ```
 
 - **One source of positions:** `layout.js` makes every positioning decision (wrapping, column widths, page break). The renderers only draw the ops.
+- **One source of values:** `view(state)` in `state.js` cleans every value once (removes `~`, trims, resolves unit times). Both `mail.js` and `layout.js` read from it, so the mail and the PDF can't show different data.
 - **Same text widths everywhere:** `measure(text, bold)` uses the embedded PT Serif metrics (`font.widthOfTextAtSize`). The SVG preview loads the same TTF files via `@font-face`.
 - **Click to edit:** every text op carries a `field` tag (e.g. `note`, `units[3].alarmTime`). Clicking text in the preview focuses the matching input.
 - **Why not show the PDF itself:** re-rendering the PDF in an iframe or with pdf.js flickers, loses zoom and adds ~1 MB. The SVG preview updates on every keystroke.
@@ -162,17 +169,20 @@ state ──► mail.js    toMailText(state)       → string
 ```
 index.html
 css/app.css
-js/config.js       own organisation name, header text, logo path
+js/config.js       own organisation name, header text, default town, logo path
 js/main.js         bootstrap: fetch keywords.json + vehicles.json, load fonts, wire events
-js/state.js        data model, defaults, keyword switching, unit time rules, localStorage draft
+js/state.js        data model, defaults, keyword switching, unit time rules, view(), localStorage draft
 js/mail.js         toMailText(state)
+js/parse.js        mail text → emergency (port of the Rust parser; import and round-trip tests)
 js/layout.js       layout(state, measure) → pages of draw ops
-js/fonts.js        load TTFs, build measure()
+js/fonts.js        fontkit, measure()
 js/render-svg.js   draw ops → SVG
 js/render-pdf.js   draw ops → PDF bytes
 js/form.js         right-hand form
-vendor/            pdf-lib, fontkit
+js/combobox.js     searchable picker for Stichwort and vehicles
+vendor/            pdf-lib, fontkit, pako
 scripts/check-data.mjs   cross-checks the data files (see Pipeline)
+scripts/vendor.sh        downloads the pinned libraries into vendor/
 tests/             node --test, fixtures in tests/fixtures/ (sampledata/ is gitignored)
 package.json       dev/test tools only; not needed for hosting
 .github/workflows/pages.yml
@@ -201,12 +211,13 @@ package.json       dev/test tools only; not needed for hosting
 
 ### Behavior rules
 
-- **New emergency:** the Stichwort picker comes first and has focus. The alarm time defaults to now.
+- **New emergency:** the Stichwort picker comes first and has focus. The alarm time defaults to now, the Ort to `defaultTown` from `config.js`.
 - **Selecting a keyword:**
   - Sets `blueLights` to the keyword's default.
-  - Removes units with `source: "keyword"` and `touched: false`.
-  - Adds the new keyword's default vehicles that aren't already in the list.
+  - Removes units with `source: "keyword"` and `touched: false`, unless the new keyword lists them too (those stay in place).
+  - Appends the new keyword's default vehicles that aren't already in the list.
   - Manual and edited units stay.
+  - Focus moves on to Einsatznummer while it's empty.
 - **Unit times:** changing the emergency's alarm time moves every unit whose `alarmTime` is `null`. A reset button next to an overridden time sets it back to `null`.
 - **Adding units:**
   - From `vehicles.json`: searchable, grouped by `category`.
@@ -230,39 +241,41 @@ package.json       dev/test tools only; not needed for hosting
 
 ## Pipeline
 
-`.github/workflows/pages.yml`, on push to `main`:
+`.github/workflows/pages.yml` runs steps 1–3 on every push and pull request, and step 4 only for `main`:
 
-1. Validate `vehicles.json` and `keywords.json` against their schemas (`ajv-cli`, draft 2020-12; the keywords schema references the vehicles schema).
-2. Run `scripts/check-data.mjs`, which checks what the schemas can't: every radio ID in `keywords.json` exists in `vehicles.json`, and no radio ID appears twice.
-3. `node --test`.
-4. Deploy the repo's static files with `actions/upload-pages-artifact` + `actions/deploy-pages`.
+1. Validate `vehicles.json` and `keywords.json` against their schemas (`npm run validate`: `ajv-cli`, draft 2020-12; the keywords schema references the vehicles schema).
+2. Run `scripts/check-data.mjs` (`npm run check-data`), which checks what the schemas can't: every radio ID in `keywords.json` exists in `vehicles.json`, and no radio ID or keyword appears twice.
+3. `npm test` (`node --test`).
+4. Copy the site files into `_site` and deploy them with `actions/upload-pages-artifact` + `actions/deploy-pages`. The repository's Pages source must be set to "GitHub Actions".
 
 The JSON files are fetched when the page loads, so changing them only needs a push.
 
 ## Phases
 
+All phases are implemented.
+
 1. **Setup**
-   - [ ] `index.html` with the two-column layout and top bar, `css/app.css`
-   - [ ] Vendor pdf-lib + fontkit
-   - [ ] Load `keywords.json` / `vehicles.json`
-   - [ ] Pages workflow with schema validation and `check-data.mjs`
+   - [x] `index.html` with the two-column layout and top bar, `css/app.css`
+   - [x] Vendor pdf-lib + fontkit
+   - [x] Load `keywords.json` / `vehicles.json`
+   - [x] Pages workflow with schema validation and `check-data.mjs`
 2. **Mail text**
-   - [ ] `state.js`: data model, keyword switching, unit time rules
-   - [ ] `mail.js`
-   - [ ] Tests: output compared to fixture mails, keyword switching, time inheritance, `~` removal, empty unit list
+   - [x] `state.js`: data model, keyword switching, unit time rules
+   - [x] `mail.js`
+   - [x] Tests: output compared to fixture mails, keyword switching, time inheritance, `~` removal, empty unit list
 3. **PDF**
-   - [ ] `fonts.js`, `layout.js`, `render-pdf.js`
-   - [ ] Calibrate: rebuild the data behind `test.pdf`, render both with `pdftoppm` and compare
-   - [ ] Tests: column widths, name shortening, page break with many units
+   - [x] `fonts.js`, `layout.js`, `render-pdf.js`
+   - [x] Calibrate: rebuild the data behind `test.pdf` (`tests/fixtures/test-pdf.json`), render both with `pdftoppm` and compare. Every word is within 0.05 pt of test.pdf, apart from the deliberate fixes.
+   - [x] Tests: column widths, name shortening, page break with many units
 4. **Preview + form**
-   - [ ] `render-svg.js`, `form.js`, live updates
-   - [ ] Unit list with add, remove and time override
-   - [ ] Download and copy buttons
+   - [x] `render-svg.js`, `form.js`, live updates
+   - [x] Unit list with add, remove and time override
+   - [x] Download and copy buttons
 5. **Polish**
-   - [ ] Click-to-edit in the preview
-   - [ ] `localStorage` draft, "Neuer Einsatz"
-   - [ ] Mobile layout
-   - [ ] Optional: import a pasted mail text (port of the Rust parser) to edit existing alarms
+   - [x] Click-to-edit in the preview (and the focused input is highlighted in the preview)
+   - [x] `localStorage` draft, "Neuer Einsatz"
+   - [x] Mobile layout
+   - [x] Optional: import a pasted mail text (port of the Rust parser) to edit existing alarms
 
 ## Verification
 

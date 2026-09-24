@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Einsatzmail-Generator</title>
+  <meta name="description" content="Erstellt Einsatzausdrucke (PDF) und Einsatzmails im Format der Leitstelle.">
+  <link rel="icon" href="resources/logo-sw.png" type="image/png">
+  <link rel="preload" href="resources/PTSerif-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="resources/PTSerif-Bold.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="css/app.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="resources/logo-sw.png" alt="" width="28" height="28">
+      <h1>Einsatzmail-Generator</h1>
+    </div>
+    <div class="actions" role="toolbar" aria-label="Export">
+      <button type="button" id="download-pdf" class="button primary" disabled>PDF herunterladen</button>
+      <button type="button" id="download-mail" class="button" disabled>Mailtext herunterladen</button>
+      <button type="button" id="copy-mail" class="button" disabled>Kopieren</button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <section class="preview" aria-label="Vorschau des Ausdrucks">
+      <div id="pages" class="pages" aria-live="off">
+        <p class="loading">Lade Stichworte, Fahrzeuge und Schriften …</p>
+      </div>
+    </section>
+
+    <aside class="editor" aria-label="Einsatzdaten">
+      <div class="editor-toolbar">
+        <button type="button" id="new-emergency" class="button small">Neuer Einsatz</button>
+        <button type="button" id="open-import" class="button small">Mail importieren …</button>
+        <span id="save-status" class="save-status" aria-live="polite"></span>
+      </div>
+
+      <p id="missing" class="missing" hidden></p>
+
+      <form id="form" class="form" autocomplete="off" novalidate>
+        <fieldset>
+          <legend>Stichwort</legend>
+          <div class="combobox" id="keyword-combobox">
+            <label for="keyword">Stichwort</label>
+            <input id="keyword" name="keyword" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false"
+              aria-controls="keyword-options" placeholder="Suchen, z. B. „Gebäude“ oder „VU“" spellcheck="false">
+            <ul id="keyword-options" class="options" role="listbox" aria-label="Stichworte" hidden></ul>
+          </div>
+          <p id="keyword-example" class="hint"></p>
+          <label class="check">
+            <input type="checkbox" name="blueLights"> mit Sondersignal
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Einsatz</legend>
+          <div class="row">
+            <label class="grow">Einsatznummer
+              <input name="number" type="text" inputmode="numeric" placeholder="z. B. 323068367">
+            </label>
+          </div>
+          <div class="row">
+            <label class="grow">Datum
+              <input name="alarmDate" type="date">
+            </label>
+            <label>Alarmzeit
+              <input name="alarmTime" type="time">
+            </label>
+            <button type="button" id="now" class="button small align-end" title="Datum und Uhrzeit auf jetzt setzen">Jetzt</button>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Einsatzort</legend>
+          <div class="row">
+            <label class="grow">Straße
+              <input name="location.street" type="text">
+            </label>
+            <label class="narrow">Nr.
+              <input name="location.houseNumber" type="text">
+            </label>
+          </div>
+          <div class="row">
+            <label class="grow">Ort
+              <input name="location.town" type="text">
+            </label>
+            <label class="grow">Ortsteil
+              <input name="location.district" type="text">
+            </label>
+          </div>
+          <label>Ortslage
+            <input name="location.locality" type="text">
+          </label>
+          <label>Sonstige Ortsangaben <span class="field-note">(Einsatzortzusatz)</span>
+            <input name="location.addition" type="text" placeholder="z. B. Hydrant, Zufahrt">
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Objekt</legend>
+          <label>Name
+            <input name="object.name" type="text">
+          </label>
+          <div class="row">
+            <label class="grow">Objektteil
+              <input name="object.part" type="text">
+            </label>
+            <label class="narrow">Nr.
+              <input name="object.number" type="text" inputmode="numeric">
+            </label>
+          </div>
+          <label>FWPlan-Nr.
+            <input name="object.fwPlan" type="text" inputmode="numeric">
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Patient</legend>
+          <div class="row">
+            <label class="grow">Vorname
+              <input name="patient.firstName" type="text">
+            </label>
+            <label class="grow">Nachname
+              <input name="patient.lastName" type="text">
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Hinweis</legend>
+          <label class="visually-hidden" for="note">Hinweis</label>
+          <textarea id="note" name="note" rows="4" placeholder="Besonderheiten, z. B. „Flammen weit sichtbar“"></textarea>
+        </fieldset>
+
+        <fieldset>
+          <legend>Einsatzmittel <span id="unit-count" class="count"></span></legend>
+          <ol id="units" class="units" aria-label="Alarmierte Einsatzmittel"></ol>
+          <p id="units-empty" class="hint">Noch keine Einsatzmittel. Das Stichwort fügt die Standardfahrzeuge hinzu.</p>
+
+          <div class="combobox" id="vehicle-combobox">
+            <label for="vehicle-search">Einsatzmittel hinzufügen</label>
+            <input id="vehicle-search" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false"
+              aria-controls="vehicle-options" placeholder="Funkkenner oder Name suchen" spellcheck="false">
+            <ul id="vehicle-options" class="options" role="listbox" aria-label="Fahrzeuge" hidden></ul>
+          </div>
+
+          <details class="custom-unit">
+            <summary>Anderes Einsatzmittel (z. B. Nachbarwehr, Rettungsdienst)</summary>
+            <div class="row">
+              <label class="grow">Funkkenner
+                <input id="custom-radio" type="text" placeholder="FL PM 03/44-01" spellcheck="false">
+              </label>
+              <label class="grow">Wache
+                <input id="custom-station" type="text" list="stations" placeholder="PM FW Teltow">
+              </label>
+            </div>
+            <div class="row">
+              <label class="grow">Bezeichnung <span class="field-note">(optional)</span>
+                <input id="custom-name" type="text" placeholder="LF 20 Teltow">
+              </label>
+              <button type="button" id="add-custom" class="button small align-end">Hinzufügen</button>
+            </div>
+          </details>
+          <datalist id="stations"></datalist>
+        </fieldset>
+
+        <details class="mail-preview" id="mail-preview">
+          <summary>Mailtext anzeigen</summary>
+          <p class="hint">Die E-Mail muss als <strong>reiner Text</strong> („Nur-Text“ / „Plain Text“) gesendet werden, nicht als HTML.</p>
+          <pre id="mail-text" class="mail-text" tabindex="0"></pre>
+        </details>
+      </form>
+    </aside>
+  </main>
+
+  <dialog id="import-dialog" class="dialog" aria-labelledby="import-title">
+    <form method="dialog" id="import-form">
+      <h2 id="import-title">Mail importieren</h2>
+      <p class="hint">Den Text einer Einsatzmail einfügen (Zeilen im Format <code>~~Ort~~…~~</code>). Der aktuelle Einsatz wird ersetzt.</p>
+      <label class="visually-hidden" for="import-text">Mailtext</label>
+      <textarea id="import-text" rows="12" spellcheck="false"></textarea>
+      <p id="import-error" class="error" hidden></p>
+      <div class="dialog-actions">
+        <button type="submit" value="cancel" class="button">Abbrechen</button>
+        <button type="submit" value="import" id="import-confirm" class="button primary">Übernehmen</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

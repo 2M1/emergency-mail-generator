@@ -1,0 +1,21 @@
+{
+  "keyword": "B:Gebäude-Groß",
+  "blueLights": true,
+  "number": "12341234",
+  "alarmTime": "2026-07-08T19:10",
+  "location": {
+    "town": "Kleinmachnow",
+    "district": "",
+    "locality": "",
+    "street": "Am Bannwald",
+    "houseNumber": "1",
+    "addition": "Hydrant H100 an der Einfahrt"
+  },
+  "object": { "name": "Feuerwache Kleinmachnow", "part": "", "number": "1", "fwPlan": "0101000" },
+  "patient": { "firstName": "Felix", "lastName": "Förster" },
+  "note": "Flammen weit sichtbar. Personen unklar.",
+  "units": [
+    { "radioId": "FL PM 01/44-01", "station": "PM FW Kleinmachnow", "name": "LF 20 RS Kleinmachnow", "alarmTime": null, "source": "keyword", "touched": false },
+    { "radioId": "FL PM 01/11-01", "station": "PM FW Kleinmachnow", "name": "ELW 1 Kleinmachnow", "alarmTime": "19:12", "source": "manual", "touched": false }
+  ]
+}

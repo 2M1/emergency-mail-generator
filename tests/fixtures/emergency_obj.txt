@@ -1,0 +1,24 @@
+~~Ort~~Kleinmachnow~~
+~~Ortsteil~~Kleinmachnow~~
+~~Ortslage~~~~
+~~Strasse~~Adolf-Grimme-Ring~~
+~~Hausnummer~~10~~
+~~Objekt~~EKZ Rathausmarkt Kleinmachnow~~
+~~FWPlan~~0101018~~
+~~Objektteil~~~~
+~~Objektnummer~~-1~~
+~~Einsatzart~~Brandeinsatz~~
+~~Alarmgrund~~B:Klein~~
+~~Sondersignal~~mit Sondersignal~~
+~~Einsatznummer~~323068367~~
+~~Besonderheiten~~Bemerkung~~
+~~Name~~Name (Pat.),Vorname (Pat.)~~
+~~EMListe~~~~
+~~Status~~Tableau-Adresse~~Wache~~Fahrzeug~~Alarmiert~~Ausgerückt~~
+~~ALARM~~#~~ø~~~~~~
+~~WGS84_X~~52.40333889~~
+~~WGS84_Y~~13.22015556~~
+~~Koord_EPSG_25833~~13.22015556~~52.40333889~~
+~~Koord_EPSG_4326~~E1322020~~N5240330~~
+~~Einsatzortzusatz~~Sonstige~~
+~~Alarmzeit~~21.07.23&15:43~~
