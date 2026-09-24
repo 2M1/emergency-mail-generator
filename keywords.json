@@ -42,7 +42,7 @@
     },
     {
       "category": "B",
-      "subcategory": "Gebäude klein",
+      "subcategory": "Gebäude-Klein",
       "example": "Garage, Schuppen, Bungalow, elektrische Anlage, Trafo",
       "blueLights": true,
       "vehicles": [
@@ -54,7 +54,7 @@
     },
     {
       "category": "B",
-      "subcategory": "Gebäude groß",
+      "subcategory": "Gebäude-Groß",
       "example": "Zimmerbrand, Kellerbrand, Dachstuhlbrand, Landwirtschaftliches Anwesen, Wohnung",
       "blueLights": true,
       "vehicles": [
@@ -186,7 +186,7 @@
     },
     {
       "category": "H",
-      "subcategory": "klein",
+      "subcategory": "Klein",
       "example": "Wasser in Keller, Baum auf Straße",
       "blueLights": true,
       "vehicles": [
@@ -283,7 +283,7 @@
     },
     {
       "category": "H",
-      "subcategory": "Flugzeugunfall klein",
+      "subcategory": "Flugzeugunfall Klein",
       "example": "Absturz Kleinflugzeug",
       "blueLights": true,
       "vehicles": [
@@ -292,7 +292,7 @@
     },
     {
       "category": "H",
-      "subcategory": "Flugzeugunfall groß",
+      "subcategory": "Flugzeugunfall Groß",
       "example": "Unfall mit Großflugzeug",
       "blueLights": true,
       "vehicles": [
@@ -340,7 +340,7 @@
     },
     {
       "category": "H",
-      "subcategory": "Gefahrgut klein",
+      "subcategory": "Gefahrgut-Klein",
       "example": "AAO durch Träger des BS bis Körperschutzform 1",
       "blueLights": true,
       "vehicles": [
@@ -351,7 +351,7 @@
     },
     {
       "category": "H",
-      "subcategory": "Gefahrgut groß",
+      "subcategory": "Gefahrgut-Groß",
       "example": "AAO durch Landkreis in Verbindung mit Träger des BS",
       "blueLights": true,
       "vehicles": [

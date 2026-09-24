@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "keywords.schema.json",
   "title": "Keywords",
-  "description": "Einsatzstichworte mit Standard-Einsatzmitteln. Das vollständige Stichwort ergibt sich aus \"<category>:<subcategory>\", z. B. \"B:Gebäude klein\".",
+  "description": "Einsatzstichworte mit Standard-Einsatzmitteln. Das vollständige Stichwort ergibt sich aus \"<category>:<subcategory>\", z. B. \"B:Gebäude-Klein\".",
   "type": "object",
   "required": ["keywords"],
   "additionalProperties": false,
@@ -25,7 +25,7 @@
           "enum": ["B", "H"]
         },
         "subcategory": {
-          "description": "Teil nach dem Doppelpunkt, z. B. \"Gebäude klein\".",
+          "description": "Teil nach dem Doppelpunkt, z. B. \"Gebäude-Klein\".",
           "type": "string",
           "minLength": 1
         },
