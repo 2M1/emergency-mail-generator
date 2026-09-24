@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "keywords.schema.json",
+  "title": "Keywords",
+  "description": "Einsatzstichworte mit Standard-Einsatzmitteln. Das vollständige Stichwort ergibt sich aus \"<category>:<subcategory>\", z. B. \"B:Gebäude klein\".",
+  "type": "object",
+  "required": ["keywords"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "keywords": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/keyword" }
+    }
+  },
+  "$defs": {
+    "keyword": {
+      "type": "object",
+      "required": ["category", "subcategory", "blueLights", "vehicles"],
+      "additionalProperties": false,
+      "properties": {
+        "category": {
+          "description": "B = Brand, H = Technische Hilfeleistung.",
+          "type": "string",
+          "enum": ["B", "H"]
+        },
+        "subcategory": {
+          "description": "Teil nach dem Doppelpunkt, z. B. \"Gebäude klein\".",
+          "type": "string",
+          "minLength": 1
+        },
+        "example": {
+          "description": "Beispiele aus dem Stichwortkatalog, zur Anzeige in der UI.",
+          "type": "string"
+        },
+        "blueLights": {
+          "description": "Standardwert für Sondersignal; in der UI änderbar.",
+          "type": "boolean"
+        },
+        "vehicles": {
+          "description": "Funkkenner aus vehicles.json, die bei Auswahl des Stichworts standardmäßig hinzugefügt werden.",
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "vehicles.schema.json#/$defs/vehicle/properties/radioId" }
+        }
+      }
+    }
+  }
+}

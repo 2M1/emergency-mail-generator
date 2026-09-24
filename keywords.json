@@ -1,0 +1,420 @@
+{
+  "$schema": "./keywords.schema.json",
+  "keywords": [
+    {
+      "category": "B",
+      "subcategory": "Klein",
+      "example": "Papierkorb, Container, Kontrolle nach Brand/Ereignis; keine Ausbreitungsgefahr",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/44-01"
+      ]
+    },
+    {
+      "category": "B",
+      "subcategory": "Pkw",
+      "example": "Pkw, Motorrad",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/44-01"
+      ]
+    },
+    {
+      "category": "B",
+      "subcategory": "Lkw",
+      "example": "Lkw, Bus, Traktor, Campinganhänger",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/11-01",
+        "FL PM 01/44-01",
+        "FL PM 01/43-01"
+      ]
+    },
+    {
+      "category": "B",
+      "subcategory": "Schornstein",
+      "example": "Schornstein, Kamin, Esse",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/44-01",
+        "FL PM 01/36-01"
+      ]
+    },
+    {
+      "category": "B",
+      "subcategory": "Gebäude klein",
+      "example": "Garage, Schuppen, Bungalow, elektrische Anlage, Trafo",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/44-01",
+        "FL PM 01/36-01",
+        "FL PM 01/11-01",
+        "FL PM 01/59-01"
+      ]
+    },
+    {
+      "category": "B",
+      "subcategory": "Gebäude groß",
+      "example": "Zimmerbrand, Kellerbrand, Dachstuhlbrand, Landwirtschaftliches Anwesen, Wohnung",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/44-01",
+        "FL PM 01/36-01",
+        "FL PM 01/11-01",
+        "FL PM 01/59-01"
+      ]
+    },
+    {
+      "category": "B",
+      "subcategory": "Sonderobjekt",
+      "example": "Sonderobjekt mit Objekt-AAO",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/44-01",
+        "FL PM 01/36-01"
+      ]
+    },
+    {
+      "category": "B",
+      "subcategory": "BMA",
+      "example": "örtliche Festlegung (Brandmeldeanlage)",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/11-01",
+        "FL PM 01/44-01",
+        "FL PM 01/36-01"
+      ]
+    },
+    {
+      "category": "B",
+      "subcategory": "Fläche",
+      "example": "Ödland, Wiese",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/24-01",
+        "FL PM 01/44-01"
+      ]
+    },
+    {
+      "category": "B",
+      "subcategory": "Wald",
+      "example": "Wald, Bahndamm",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/11-01",
+        "FL PM 01/24-01",
+        "FL PM 01/43-01",
+        "FL PM 01/44-01"
+      ]
+    },
+    {
+      "category": "B",
+      "subcategory": "Wald Groß/WSP",
+      "example": "Wald, Getreidefeld",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/11-01",
+        "FL PM 01/24-01",
+        "FL PM 01/43-01",
+        "FL PM 01/44-01"
+      ]
+    },
+    {
+      "category": "B",
+      "subcategory": "Schiene",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/11-01",
+        "FL PM 01/44-01"
+      ]
+    },
+    {
+      "category": "B",
+      "subcategory": "Boot",
+      "example": "Sport- und Freizeitboote",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/44-01",
+        "FL PM 01/79-01"
+      ]
+    },
+    {
+      "category": "B",
+      "subcategory": "Schiff",
+      "example": "Schiff, Transportschiff, Fahrgastschiff",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/11-01",
+        "FL PM 01/44-01",
+        "FL PM 01/79-01"
+      ]
+    },
+    {
+      "category": "B",
+      "subcategory": "Gefahrgut",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/44-01"
+      ]
+    },
+    {
+      "category": "B",
+      "subcategory": "Kleinflugzeug",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/11-01",
+        "FL PM 01/44-01"
+      ]
+    },
+    {
+      "category": "B",
+      "subcategory": "Großflugzeug",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/11-01",
+        "FL PM 01/44-01"
+      ]
+    },
+    {
+      "category": "B",
+      "subcategory": "Explosion",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/11-01",
+        "FL PM 01/44-01"
+      ]
+    },
+    {
+      "category": "H",
+      "subcategory": "klein",
+      "example": "Wasser in Keller, Baum auf Straße",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/43-01"
+      ]
+    },
+    {
+      "category": "H",
+      "subcategory": "Natur",
+      "example": "Schäden durch witterungsbedingte Ereignisse",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/43-01"
+      ]
+    },
+    {
+      "category": "H",
+      "subcategory": "Hilfeleistung",
+      "example": "Ausleuchten von Einsatzstellen, Tragehilfe Rettungsdienst, Hubschrauberlandung, Transport RTH-Besatzung, Stromunfall",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/43-01"
+      ]
+    },
+    {
+      "category": "H",
+      "subcategory": "Türnotöffnung",
+      "example": "Hilflose Person",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/43-01",
+        "FL PM 01/36-01"
+      ]
+    },
+    {
+      "category": "H",
+      "subcategory": "VU ohne P",
+      "example": "Unfall mit Blechschaden, auslaufende Flüssigkeiten",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/43-01"
+      ]
+    },
+    {
+      "category": "H",
+      "subcategory": "VU mit P",
+      "example": "Unfall mit Verletzten, jedoch nicht eingeklemmt",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/11-01",
+        "FL PM 01/43-01"
+      ]
+    },
+    {
+      "category": "H",
+      "subcategory": "VU Klemm",
+      "example": "eingeklemmte Person",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/11-01",
+        "FL PM 01/43-01"
+      ]
+    },
+    {
+      "category": "H",
+      "subcategory": "VU LKW/Bus",
+      "example": "LKW-/Busunfall, LKW gegen PKW/LKW/BUS",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/11-01",
+        "FL PM 01/43-01"
+      ]
+    },
+    {
+      "category": "H",
+      "subcategory": "VU Schiene",
+      "example": "Pkw gegen Zug, entgleister Zug, Zug gegen Zug",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/11-01",
+        "FL PM 01/43-01"
+      ]
+    },
+    {
+      "category": "H",
+      "subcategory": "VU Schiff",
+      "example": "Schiffskollision, leckgeschlagenes Schiff, Transportschiff, Fahrgastschiff",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/11-01",
+        "FL PM 01/43-01",
+        "FL PM 01/79-01"
+      ]
+    },
+    {
+      "category": "H",
+      "subcategory": "Flugzeugunfall klein",
+      "example": "Absturz Kleinflugzeug",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/43-01"
+      ]
+    },
+    {
+      "category": "H",
+      "subcategory": "Flugzeugunfall groß",
+      "example": "Unfall mit Großflugzeug",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/43-01"
+      ]
+    },
+    {
+      "category": "H",
+      "subcategory": "Person auf Schiene",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/11-01",
+        "FL PM 01/43-01"
+      ]
+    },
+    {
+      "category": "H",
+      "subcategory": "Person im Wasser/Eis",
+      "example": "Wasserrettung, eingebrochene Person in See",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/43-01",
+        "FL PM 01/79-01"
+      ]
+    },
+    {
+      "category": "H",
+      "subcategory": "Rettung aus Höhen und Tiefen",
+      "example": "Bauunfall, Rettung aus Höhe, Rettung aus Schacht, Windkraftanlage",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/43-01",
+        "FL PM 01/36-01"
+      ]
+    },
+    {
+      "category": "H",
+      "subcategory": "Gas",
+      "example": "Gasgeruch, Gasaustritt",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/11-01",
+        "FL PM 01/43-01"
+      ]
+    },
+    {
+      "category": "H",
+      "subcategory": "Gefahrgut klein",
+      "example": "AAO durch Träger des BS bis Körperschutzform 1",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/11-01",
+        "FL PM 01/43-01", 
+        "FL PM 01/44-01"
+      ]
+    },
+    {
+      "category": "H",
+      "subcategory": "Gefahrgut groß",
+      "example": "AAO durch Landkreis in Verbindung mit Träger des BS",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/11-01",
+        "FL PM 01/43-01",
+        "FL PM 01/44-01"
+      ]
+    },
+    {
+      "category": "H",
+      "subcategory": "Einsturz",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/11-01",
+        "FL PM 01/43-01",
+        "FL PM 01/36-01"
+      ]
+    },
+    {
+      "category": "H",
+      "subcategory": "Öl Land",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/43-01"
+      ]
+    },
+    {
+      "category": "H",
+      "subcategory": "Öl auf Wasser",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/43-01",
+        "FL PM 01/79-01"
+      ]
+    },
+    {
+      "category": "H",
+      "subcategory": "Tier in Not",
+      "example": "Tier in Not, Not durch Tier",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/43-01"
+      ]
+    },
+    {
+      "category": "H",
+      "subcategory": "Kommunal",
+      "example": "Einsätze im Auftrag des Trägers, Amtshilfe, BRASIWA, Notarztzubringer",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/43-01"
+      ]
+    },
+    {
+      "category": "H",
+      "subcategory": "Person-TMR",
+      "example": "Person in Not, Technische Menschenrettung",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/11-01",
+        "FL PM 01/43-01",
+        "FL PM 01/44-01"
+      ]
+    }
+  ]
+}

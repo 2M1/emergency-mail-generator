@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "vehicles.schema.json",
+  "title": "Vehicles",
+  "description": "Fahrzeuge und Funkrufnamen, die einem Einsatz hinzugefügt werden können.",
+  "type": "object",
+  "required": ["vehicles"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "vehicles": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/vehicle" }
+    }
+  },
+  "$defs": {
+    "vehicle": {
+      "type": "object",
+      "required": ["radioId", "name", "station"],
+      "additionalProperties": false,
+      "properties": {
+        "radioId": {
+          "description": "Funkkenner, wie er in EMListe und ALARM-Tabelle erscheint, z. B. \"FL PM 01/43-01\".",
+          "type": "string",
+          "pattern": "^[A-Z]{2} [A-Z]{2} \\d{2}/\\d{2}(-\\d{2})?$"
+        },
+        "name": {
+          "description": "Anzeigename, z. B. \"HLF 20 RS Kleinmachnow\".",
+          "type": "string",
+          "minLength": 1
+        },
+        "station": {
+          "description": "Wache/Tableau-Adresse für die Spalte \"Wache\" der ALARM-Tabelle, z. B. \"PM FW Kleinmachnow\".",
+          "type": "string",
+          "minLength": 1
+        },
+        "category": {
+          "description": "Art des Eintrags.",
+          "type": "string",
+          "enum": ["vehicle", "trailer", "equipment", "function", "station", "officer", "other"]
+        },
+        "crew": {
+          "description": "Besatzungsstärke, z. B. \"1/8\" oder \"1/1/2\".",
+          "type": "string",
+          "pattern": "^\\d+(/\\d+){1,3}$"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
