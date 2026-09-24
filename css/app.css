@@ -252,6 +252,9 @@ textarea {
 /* ---------- editor ---------- */
 
 .editor {
+  /* Positioned, so absolutely positioned content (e.g. .visually-hidden labels) scrolls with the
+     panel instead of extending the page. */
+  position: relative;
   min-height: 0;
   overflow: auto;
   border-left: 1px solid var(--border);
