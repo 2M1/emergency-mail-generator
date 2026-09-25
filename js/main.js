@@ -109,7 +109,8 @@ async function main() {
   const { keywords, vehicles, assets } = loaded;
   const measure = measureFromBytes(assets);
   const vehiclesById = new Map(vehicles.map((v) => [v.radioId, v]));
-  const layoutOptions = { headerLines: CONFIG.headerLines, ownOrganisation: CONFIG.ownOrganisation };
+  const layoutOptions = { headerLines: CONFIG.headerLines, ownOrganisation: CONFIG.ownOrganisation, demoNotice: CONFIG.demoNotice };
+  $("demo-notice-text").textContent = CONFIG.demoNotice;
   const storage = browserStorage();
   const newEmergency = () => createEmergency({ town: CONFIG.defaultTown });
 

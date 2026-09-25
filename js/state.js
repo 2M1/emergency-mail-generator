@@ -24,6 +24,8 @@ export function createEmergency({ now = new Date(), town = "" } = {}) {
   return {
     keyword: "",
     blueLights: true,
+    // Prints the "kein echter Einsatz" note at the bottom of every page.
+    demoNotice: true,
     number: "",
     alarmTime: formatLocalDateTime(now),
     location: { town, district: "", locality: "", street: "", houseNumber: "", addition: "" },
@@ -144,6 +146,8 @@ export function view(state) {
     keyword: cleanValue(state.keyword),
     category: keywordCategory(cleanValue(state.keyword)),
     sondersignal: sondersignalText(state.blueLights),
+    // Only an explicit false switches the note off, so states without the field keep it.
+    demoNotice: state.demoNotice !== false,
     number: cleanValue(state.number),
     date,
     time,
@@ -203,6 +207,7 @@ export function normalizeEmergency(raw, defaults = createEmergency()) {
   return {
     keyword: text(source.keyword ?? defaults.keyword),
     blueLights: typeof source.blueLights === "boolean" ? source.blueLights : defaults.blueLights,
+    demoNotice: typeof source.demoNotice === "boolean" ? source.demoNotice : defaults.demoNotice,
     number: text(source.number ?? defaults.number),
     alarmTime: /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(source.alarmTime) ? source.alarmTime : defaults.alarmTime,
     location: group("location"),

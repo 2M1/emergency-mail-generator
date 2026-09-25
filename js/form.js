@@ -257,8 +257,8 @@ export function createForm({ keywords, vehicles, getState, onChange, onActiveFie
     }
     const name = target.name;
     if (!name || name === "keyword") return;
-    if (name === "blueLights") {
-      change({ ...state, blueLights: target.checked });
+    if (target.type === "checkbox") {
+      change({ ...state, [name]: target.checked }); // blueLights, demoNotice
     } else if (name === "alarmDate" || name === "alarmTime") {
       const { date, time } = splitDateTime(state.alarmTime);
       change({ ...state, alarmTime: name === "alarmDate" ? joinDateTime(target.value, time) : joinDateTime(date, target.value) });
@@ -316,7 +316,7 @@ export function createForm({ keywords, vehicles, getState, onChange, onActiveFie
     for (const element of form.elements) {
       const name = element.name;
       if (!name || element.dataset.unitField) continue;
-      if (name === "blueLights") element.checked = state.blueLights;
+      if (element.type === "checkbox") element.checked = state[name] !== false;
       else if (name === "alarmDate") setValue(element, date);
       else if (name === "alarmTime") setValue(element, time);
       else setValue(element, getPath(state, name) ?? "");

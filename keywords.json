@@ -110,7 +110,7 @@
       ]
     },
     {
-      "keyword": "B:Wald Groß/WSP",
+      "keyword": "B:Wald-Groß/WSP",
       "category": "B",
       "example": "Wald, Getreidefeld",
       "blueLights": true,
@@ -238,7 +238,7 @@
       ]
     },
     {
-      "keyword": "H:VU ohne P",
+      "keyword": "H:VU-ohne-P",
       "category": "H",
       "example": "Unfall mit Blechschaden, auslaufende Flüssigkeiten",
       "blueLights": true,
@@ -247,7 +247,7 @@
       ]
     },
     {
-      "keyword": "H:VU mit P",
+      "keyword": "H:VU-mit-P",
       "category": "H",
       "example": "Unfall mit Verletzten, jedoch nicht eingeklemmt",
       "blueLights": true,
@@ -256,7 +256,7 @@
       ]
     },
     {
-      "keyword": "H:VU Klemm",
+      "keyword": "H:VU-Klemm",
       "category": "H",
       "example": "eingeklemmte Person",
       "blueLights": true,
@@ -268,7 +268,7 @@
       ]
     },
     {
-      "keyword": "H:VU LKW/Bus",
+      "keyword": "H:VU-LKW/Bus",
       "category": "H",
       "example": "LKW-/Busunfall, LKW gegen PKW/LKW/BUS",
       "blueLights": true,
@@ -279,7 +279,7 @@
       ]
     },
     {
-      "keyword": "H:VU Schiene",
+      "keyword": "H:VU-Schiene",
       "category": "H",
       "example": "Pkw gegen Zug, entgleister Zug, Zug gegen Zug",
       "blueLights": true,
@@ -289,7 +289,7 @@
       ]
     },
     {
-      "keyword": "H:VU Schiff",
+      "keyword": "H:VU-Schiff",
       "category": "H",
       "example": "Schiffskollision, leckgeschlagenes Schiff, Transportschiff, Fahrgastschiff",
       "blueLights": true,
@@ -301,7 +301,7 @@
       ]
     },
     {
-      "keyword": "H:Flugzeugunfall Klein",
+      "keyword": "H:Flugzeugunfall-Klein",
       "category": "H",
       "example": "Absturz Kleinflugzeug",
       "blueLights": true,
@@ -311,7 +311,7 @@
       ]
     },
     {
-      "keyword": "H:Flugzeugunfall Groß",
+      "keyword": "H:Flugzeugunfall-Groß",
       "category": "H",
       "example": "Unfall mit Großflugzeug",
       "blueLights": true,
@@ -325,7 +325,7 @@
       ]
     },
     {
-      "keyword": "H:Person auf Schiene",
+      "keyword": "H:Person-auf-Schiene",
       "category": "H",
       "blueLights": true,
       "vehicles": [
@@ -334,7 +334,7 @@
       ]
     },
     {
-      "keyword": "H:Person im Wasser/Eis",
+      "keyword": "H:Person-im-Wasser/EIS",
       "category": "H",
       "example": "Wasserrettung, eingebrochene Person in See",
       "blueLights": true,
@@ -344,7 +344,7 @@
       ]
     },
     {
-      "keyword": "H:Rettung aus Höhen und Tiefen",
+      "keyword": "H:Rettung-aus-Höhen-und-Tiefen",
       "category": "H",
       "example": "Bauunfall, Rettung aus Höhe, Rettung aus Schacht, Windkraftanlage",
       "blueLights": true,
@@ -398,7 +398,7 @@
       ]
     },
     {
-      "keyword": "H:Öl Land",
+      "keyword": "H:Öl-Land",
       "category": "H",
       "blueLights": true,
       "vehicles": [
@@ -406,7 +406,7 @@
       ]
     },
     {
-      "keyword": "H:Öl auf Wasser",
+      "keyword": "H:Öl-auf-Wasser",
       "category": "H",
       "blueLights": true,
       "vehicles": [
@@ -415,7 +415,7 @@
       ]
     },
     {
-      "keyword": "H:Tier in Not",
+      "keyword": "H:Tier-in-Not",
       "category": "H",
       "example": "Tier in Not, Not durch Tier",
       "blueLights": true,

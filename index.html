@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Einsatzmail-Generator</title>
   <meta name="description" content="Erstellt Einsatzausdrucke (PDF) und Einsatzmails im Format der Leitstelle.">
+  <meta name="author" content="Markus Mielimonka">
   <link rel="icon" href="resources/logo-sw.png" type="image/png">
   <link rel="preload" href="resources/PTSerif-Regular.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="resources/PTSerif-Bold.ttf" as="font" type="font/ttf" crossorigin>
@@ -16,6 +17,7 @@
     <div class="brand">
       <img src="resources/logo-sw.png" alt="" width="28" height="28">
       <h1>Einsatzmail-Generator</h1>
+      <small class="copyright">© 2026 Markus Mielimonka</small>
     </div>
     <div class="actions" role="toolbar" aria-label="Export">
       <button type="button" id="download-pdf" class="button primary" disabled>PDF herunterladen</button>
@@ -165,6 +167,14 @@
             </div>
           </details>
           <datalist id="stations"></datalist>
+        </fieldset>
+
+        <fieldset>
+          <legend>Ausdruck</legend>
+          <label class="check">
+            <input type="checkbox" name="demoNotice" aria-describedby="demo-notice-text"> Hinweis „kein echter Einsatz“ auf jeder Seite
+          </label>
+          <p id="demo-notice-text" class="hint"></p>
         </fieldset>
 
         <details class="mail-preview" id="mail-preview">

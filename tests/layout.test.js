@@ -118,7 +118,9 @@ test("a very long note continues on the next page", () => {
   // Note lines fill page 1 and part of page 2; the 16 table rows then need a third page.
   assert.equal(pages.length, 3);
   for (const page of pages) {
-    for (const op of texts(page)) assert.ok(op.y + LINE_HEIGHT < MAX_Y, `${op.text} at ${op.y} overlaps the bottom margin`);
+    for (const op of texts(page).filter((o) => o.field !== "demoNotice")) {
+      assert.ok(op.y + LINE_HEIGHT < MAX_Y, `${op.text} at ${op.y} overlaps the bottom margin`);
+    }
   }
   assert.ok(find(pages[1], "Zeile 60"));
   assert.ok(find(pages[1], "Alarmierungen"), "the table follows the note on page 2");
@@ -133,6 +135,36 @@ test("wrapText wraps at words, keeps line breaks and splits overlong words", () 
   assert.ok(parts.length > 1);
   assert.equal(parts.join(""), "x".repeat(200));
   for (const part of parts) assert.ok(measure(part) <= 50);
+});
+
+test("the 'kein echter Einsatz' note is centred at 10 pt at the bottom of every page", () => {
+  const state = mailToEmergency(fixture("emergency_many_units.txt"), { vehiclesById });
+  const { pages } = layout(state, measure, LAYOUT_OPTIONS);
+  assert.equal(pages.length, 2);
+  for (const page of pages) {
+    const notes = texts(page).filter((op) => op.field === "demoNotice");
+    assert.equal(notes.length, 1, "one line per page");
+    const [note] = notes;
+    assert.equal(note.text, LAYOUT_OPTIONS.demoNotice);
+    assert.equal(note.size, 10);
+    assert.equal(note.bold, false);
+    near(note.y, 287, "baseline 10 mm above the page edge");
+    const width = (measure(note.text) * 10) / 12;
+    near(note.x, (210 - width) / 2, "centred");
+    assert.ok(note.x >= 15 && note.x + width <= 195, "inside the side margins");
+    const lowestContent = Math.max(...texts(page).filter((op) => op !== note).map((op) => op.y));
+    assert.ok(lowestContent + LINE_HEIGHT < note.y - 2, "below all content");
+  }
+});
+
+test("the note can be switched off and needs a text", () => {
+  const base = fixtureJson("test-pdf.json");
+  const hasNote = (state, options = LAYOUT_OPTIONS) =>
+    layout(state, measure, options).pages[0].ops.some((op) => op.field === "demoNotice");
+  assert.equal(hasNote(base), true, "on when the state doesn't say otherwise");
+  assert.equal(hasNote({ ...base, demoNotice: true }), true);
+  assert.equal(hasNote({ ...base, demoNotice: false }), false);
+  assert.equal(hasNote(base, { ...LAYOUT_OPTIONS, demoNotice: "" }), false);
 });
 
 test("the header shows number, date and time", () => {

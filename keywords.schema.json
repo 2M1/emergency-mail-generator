@@ -22,7 +22,8 @@
         "keyword": {
           "description": "Alarmgrund, wie er in der Mail steht, z. B. \"B:Gebäude-Groß\" oder \"R1N1f\". Muss eindeutig sein.",
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9äöüÄÖÜß/:-]+$"
         },
         "category": {
           "description": "B = Brand, H = Technische Hilfeleistung, R = Rettungsdienst. Bestimmt die Einsatzart der Mail und die Gruppe in der UI.",

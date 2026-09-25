@@ -144,6 +144,11 @@ After a single-line label: `y = end of value + 1.2·LH`. After a two-line label 
 - `Einsatzmittel` is the vehicle name from `vehicles.json`. When it's wider than the space up to x = 195, drop whole words from the end, always keeping the first word. Units not in `vehicles.json` show an empty name unless one was typed in.
 - Rows go on page 1 while `y + LH < 297 − 20`. The rest continue on page 2 starting at y = 25, with the header row repeated.
 
+**"Kein echter Einsatz" note** (on by default, can be switched off per emergency)
+- `demoNotice` text from `config.js` ("Dies ist kein echter Einsatz. Erstellt mit https://2m1.github.io/emergency-mail-generator/"), PT Serif Regular 10 pt.
+- On every page, centred, baseline at y = 287, i.e. in the bottom margin below all content. Wraps if a longer text doesn't fit between x 15 and 195.
+- Not part of the mail text.
+
 **Metadata and file names**
 - PDF title: `Einsatz am YYYY-MM-DD um HH:MM:00`.
 - Downloads: `YYYY-MM-DD_HH-MM_<Stichwort>.pdf` and the same name with `.txt` for the mail text. Characters Windows forbids in file names (`\ / : * ? " < > |`, e.g. in `B:Wald Groß/WSP`) become `-`.
@@ -156,6 +161,7 @@ After a single-line label: `y = end of value + 1.2·LH`. After a two-line label 
 - Long text wraps at word boundaries using the measured text width. Rust splits every 80 characters, even mid-word.
 - No leading space before the patient name.
 - The table header row is repeated on page 2.
+- The "kein echter Einsatz" note at the bottom of each page (new, switchable).
 - A long note or unit list continues on as many pages as needed (Rust assumes everything fits on two pages). If not even the table header and one row fit on the current page, the table starts on the next one.
 
 ## Architecture
@@ -212,6 +218,7 @@ package.json       dev/test tools only; not needed for hosting
 {
   keyword: "B:Gebäude-Groß",          // `keyword` from keywords.json, e.g. also "R1N1f"
   blueLights: true,
+  demoNotice: true,                   // "kein echter Einsatz" note on every page; missing = true
   number: "12341234",
   alarmTime: "2026-07-08T19:10",      // local time, minute precision
   location: { town, district, locality, street, houseNumber, addition },
@@ -245,7 +252,7 @@ package.json       dev/test tools only; not needed for hosting
 
 ## UI
 
-- **Top bar:** title on the left. On the right: `PDF herunterladen`, `Mailtext herunterladen`, `Kopieren` (mail text to clipboard). No `mailto:` link, because a long unit list exceeds URL length limits.
+- **Top bar:** title and "© 2026 Markus Mielimonka" on the left. On the right: `PDF herunterladen`, `Mailtext herunterladen`, `Kopieren` (mail text to clipboard). No `mailto:` link, because a long unit list exceeds URL length limits.
 - **Left column (~⅔):** A4 pages scaled to the column width, stacked vertically, always visible.
 - **Right column (~⅓), in this order:**
   1. Stichwort (searchable, shows the `example` text) and Sondersignal toggle
@@ -255,6 +262,7 @@ package.json       dev/test tools only; not needed for hosting
   5. Patient: Vorname, Nachname
   6. Hinweis (textarea)
   7. Einsatzmittel: one row per unit with Funkkenner, name, Wache, time (placeholder = emergency time, reset button) and remove; below the list, add from `vehicles.json` or add a custom unit
+  8. Ausdruck: checkbox for the "kein echter Einsatz" note (on by default; "Neuer Einsatz" and imports switch it back on)
 - **Narrow screens:** the columns stack, with the form first and the preview below.
 
 ## Pipeline

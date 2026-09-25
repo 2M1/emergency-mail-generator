@@ -26,6 +26,10 @@ const HEADER_BOXES = [15, 50, 78, 103, 142, 195];
 const LOGO = { x: 142, bottom: 41.5, size: 48 * PT };
 const LINE_WIDTH = 1; // pt
 const ROW_STEP = 1.5 * LINE_HEIGHT;
+const NOTICE_SIZE = 10; // pt
+const NOTICE_BASELINE = PAGE_HEIGHT - 10; // mm, inside the bottom margin, below all content
+
+const textOp = (x, y, text, { bold = false, field = null, size = FONT_SIZE } = {}) => ({ type: "text", x, y, text, bold, size, field });
 
 class PageWriter {
   constructor() {
@@ -38,8 +42,8 @@ class PageWriter {
     this.pages.push({ ops: this.ops });
   }
 
-  text(x, y, text, { bold = false, field = null } = {}) {
-    if (text) this.ops.push({ type: "text", x, y, text, bold, size: FONT_SIZE, field });
+  text(x, y, text, options) {
+    if (text) this.ops.push(textOp(x, y, text, options));
   }
 
   /** Draws one line per entry ({ text, field }) and returns the y below the last one. */
@@ -235,11 +239,28 @@ function drawUnitTable(w, measure, y, units, ownOrganisation) {
 }
 
 /**
+ * The "not a real emergency" note, centred in the bottom margin of every page at NOTICE_SIZE.
+ * Glyph advances scale linearly with the font size, so the 12 pt measure is scaled down.
+ */
+function drawNotice(pages, measure, text) {
+  const scaled = (t, bold) => (measure(t, bold) * NOTICE_SIZE) / FONT_SIZE;
+  const lines = wrapText(text, RIGHT_EDGE - MARGIN_X, scaled);
+  const lineHeight = (NOTICE_SIZE + 1) * PT;
+  for (const page of pages) {
+    lines.forEach((line, i) => {
+      const y = NOTICE_BASELINE - (lines.length - 1 - i) * lineHeight;
+      page.ops.push(textOp((PAGE_WIDTH - scaled(line)) / 2, y, line, { size: NOTICE_SIZE, field: "demoNotice" }));
+    });
+  }
+}
+
+/**
  * @param state emergency (see state.js)
  * @param measure (text, bold) => width in mm at FONT_SIZE
+ * @param options.demoNotice text of the note printed on every page while state.demoNotice is on
  * @returns {{ title: string, pages: { ops: object[] }[] }}
  */
-export function layout(state, measure, { headerLines = [], ownOrganisation = "" } = {}) {
+export function layout(state, measure, { headerLines = [], ownOrganisation = "", demoNotice = "" } = {}) {
   const v = view(state);
   const w = new PageWriter();
 
@@ -249,6 +270,7 @@ export function layout(state, measure, { headerLines = [], ownOrganisation = "" 
   y += 1.2 * LINE_HEIGHT;
   if (v.note) y = drawNote(w, measure, y, v.note);
   drawUnitTable(w, measure, y, v.units, ownOrganisation);
+  if (v.demoNotice && demoNotice) drawNotice(w.pages, measure, demoNotice);
 
   const title = v.date && v.time ? `Einsatz am ${v.date} um ${v.time}:00` : "Einsatz";
   return { title, pages: w.pages };

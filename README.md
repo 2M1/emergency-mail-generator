@@ -9,6 +9,8 @@ A static website that creates an alarm printout (PDF) and the matching mail text
 3. Adjust the **Einsatzmittel**: add vehicles from `vehicles.json`, add other units (e.g. neighbouring stations) with Funkkenner and Wache, or give a unit its own alarm time. Units without their own time follow the emergency's alarm time.
 4. **PDF herunterladen**, **Mailtext herunterladen** or **Kopieren** (mail text to the clipboard). Send the mail as **plain text** ("Nur-Text"), not HTML.
 
+Every page carries the note "Dies ist kein echter Einsatz. Erstellt mit https://2m1.github.io/emergency-mail-generator/" at the bottom. It can be switched off under **Ausdruck**; each new emergency starts with it on. The text is set in `js/config.js`.
+
 The current emergency is saved in the browser as a draft. **Neuer Einsatz** starts over, **Mail importieren** loads an existing mail text.
 
 ## Data

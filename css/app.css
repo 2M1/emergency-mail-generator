@@ -116,8 +116,9 @@ textarea {
 
 .brand {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 10px;
+  gap: 2px 10px;
 }
 
 .brand img {
@@ -129,6 +130,12 @@ textarea {
   margin: 0;
   font-size: 16px;
   font-weight: 600;
+}
+
+.copyright {
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
 }
 
 .actions {

@@ -26,7 +26,15 @@ test("a new emergency starts at the given time with the default town", () => {
   const state = start();
   assert.equal(state.alarmTime, "2026-07-08T19:10");
   assert.equal(state.location.town, "Kleinmachnow");
+  assert.equal(state.demoNotice, true);
   assert.deepEqual(state.units, []);
+});
+
+test("the demo notice stays on unless a draft explicitly switched it off", () => {
+  const defaults = start();
+  assert.equal(normalizeEmergency({}, defaults).demoNotice, true, "older drafts without the field");
+  assert.equal(normalizeEmergency({ demoNotice: "no" }, defaults).demoNotice, true);
+  assert.equal(normalizeEmergency({ demoNotice: false }, defaults).demoNotice, false);
 });
 
 test("selecting a keyword sets Sondersignal and adds its default vehicles", () => {

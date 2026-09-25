@@ -1,4 +1,5 @@
 import { readFileSync } from "node:fs";
+import { CONFIG } from "../js/config.js";
 import { measureFromBytes } from "../js/fonts.js";
 
 const root = new URL("../", import.meta.url);
@@ -23,4 +24,4 @@ export const keywords = readJson("keywords.json").keywords;
 export const vehiclesById = new Map(vehicles.map((v) => [v.radioId, v]));
 export const findKeyword = (id) => keywords.find((k) => k.keyword === id);
 
-export const LAYOUT_OPTIONS = { headerLines: ["Feuerwehr", "Kleinmachnow"], ownOrganisation: "Kleinmachnow" };
+export const LAYOUT_OPTIONS = { headerLines: CONFIG.headerLines, ownOrganisation: CONFIG.ownOrganisation, demoNotice: CONFIG.demoNotice };
