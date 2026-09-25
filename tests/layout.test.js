@@ -49,8 +49,8 @@ test("the test.pdf emergency is laid out like the Rust printout", () => {
 test("the Rust quirks are fixed: no dangling 'Ort /' and no leading space before the patient", () => {
   const page = layout(fixtureJson("test-pdf.json"), measure, LAYOUT_OPTIONS).pages[0];
   assert.ok(find(page, "Kleinmachnow"), "town without ' /'");
-  assert.ok(find(page, "Felix Förster"), "patient without leading space");
-  assert.equal(find(page, "Felix Förster").x, 50);
+  assert.ok(find(page, "Max Mustermann"), "patient without leading space");
+  assert.equal(find(page, "Max Mustermann").x, 50);
 });
 
 test("Ort / Ortsteil and Ortslage follow the Rust rules otherwise", () => {

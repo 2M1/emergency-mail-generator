@@ -16,7 +16,7 @@ export function checkData(vehicles, keywords) {
 
   const keywordIds = new Set();
   for (const keyword of keywords) {
-    const id = `${keyword.category}:${keyword.subcategory}`;
+    const id = keyword.keyword;
     if (keywordIds.has(id)) problems.push(`keywords.json: keyword "${id}" appears more than once`);
     keywordIds.add(id);
     const seen = new Set();

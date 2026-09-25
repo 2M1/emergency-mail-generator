@@ -117,10 +117,10 @@ test("real Leitstelle mails are parsed like the Rust parser does", () => {
   const simple = mailToEmergency(fixture("emergency_simple.txt"), { vehiclesById });
   assert.equal(simple.keyword, "H:Natur");
   assert.equal(simple.blueLights, false);
-  assert.equal(simple.number, "322088295");
-  assert.equal(simple.alarmTime, "2022-09-29T08:23");
+  assert.equal(simple.number, "300000001");
+  assert.equal(simple.alarmTime, "2022-04-01T08:23");
   assert.deepEqual(simple.location, {
-    town: "Brandenburg an der Havel", district: "Göttin/BRB", locality: "Görisgräben", street: "Görisgräben", houseNumber: "22", addition: "",
+    town: "Brandenburg an der Havel", district: "Musterhöfe/BRB", locality: "Übungsweg", street: "Übungsweg", houseNumber: "1", addition: "",
   });
   assert.deepEqual(simple.patient, { firstName: "", lastName: "" });
   assert.equal(simple.object.number, "");
@@ -136,11 +136,40 @@ test("real Leitstelle mails are parsed like the Rust parser does", () => {
   const object = mailToEmergency(fixture("emergency_obj.txt"), { vehiclesById });
   assert.deepEqual(object.units, []);
   assert.deepEqual(object.patient, { firstName: "Vorname (Pat.)", lastName: "Name (Pat.)" });
-  assert.equal(object.object.fwPlan, "0101018");
+  assert.equal(object.object.fwPlan, "0101999");
   assert.equal(object.location.addition, "Sonstige");
 
   const many = parseMail(fixture("emergency_many_units.txt"));
   assert.equal(many.alarms.length, 35);
   assert.equal(many.emList.length, 34);
   assert.deepEqual(many.alarms[0], { radioId: "FL PM 01/01-01", station: "PM AMT Kleinmachnow", time: "00:01" });
+});
+
+test("Rettungsdienst keywords are written as they are, with Einsatzart Rettungseinsatz", () => {
+  const mail = toMailText(emergency({ keyword: "R1N1f", units: [unit("FL PM 01/85-01")] }));
+  assert.equal(lineOf(mail, "Einsatzart"), "~~Einsatzart~~Rettungseinsatz~~");
+  assert.equal(lineOf(mail, "Alarmgrund"), "~~Alarmgrund~~R1N1f~~");
+  assert.equal(lineOf(mail, "Sondersignal"), "~~Sondersignal~~mit Sondersignal~~");
+});
+
+test("a Leitstelle EMS mail is imported with its FR mapping row and empty alarm time", () => {
+  // EMListe only lists the RT units here; "FR Kleinmachnow" is the EMS name of the fire
+  // department, not a radio ID, and FL PM 01/85-01 has no alarm time.
+  const ems = mailToEmergency(fixture("emergency_r1n1f.txt"), { vehiclesById });
+  assert.equal(ems.keyword, "R1N1f");
+  assert.equal(ems.alarmTime, "2026-01-01T12:00");
+  assert.deepEqual(ems.patient, { firstName: "", lastName: "Mustermann" });
+  assert.deepEqual(
+    ems.units.map((u) => [u.radioId, u.station, u.name, u.alarmTime]),
+    [
+      ["RT PM 03/82-01", "PM RW Teltow", "", "11:59"],
+      ["RT PM 03/83-04", "PM RW Teltow", "", "11:59"],
+      ["FR Kleinmachnow", "PM FW Kleinmachnow", "", null],
+      ["FL PM 01/85-01", "PM FW Kleinmachnow", "RTW FR Kleinmachnow", null],
+    ],
+  );
+  const mail = toMailText(ems);
+  assert.equal(lineOf(mail, "Einsatzart"), "~~Einsatzart~~Rettungseinsatz~~");
+  assert.equal(lineOf(mail, "Name"), "~~Name~~Mustermann,~~");
+  assert.equal(lineOf(mail, "EMListe"), "~~EMListe~~FL PM 01/85-01, FR Kleinmachnow, RT PM 03/82-01, RT PM 03/83-04~~");
 });

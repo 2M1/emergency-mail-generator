@@ -2,7 +2,7 @@
 // ../emergency_mail parses (see src/models/emergency_parsing.rs there).
 import { emList, view } from "./state.js";
 
-const EMERGENCY_TYPES = { B: "Brandeinsatz", H: "Hilfeleistungseinsatz" };
+const EMERGENCY_TYPES = { B: "Brandeinsatz", H: "Hilfeleistungseinsatz", R: "Rettungseinsatz" };
 
 export const STATUS_LINE = "~~Status~~Tableau-Adresse~~Wache~~Fahrzeug~~Alarmiert~~Ausgerückt~~";
 /** Real mails contain this single row when no unit was alarmed. */

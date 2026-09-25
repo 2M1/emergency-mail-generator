@@ -12,7 +12,7 @@
     "addition": "Hydrant H100 an der Einfahrt"
   },
   "object": { "name": "Feuerwache Kleinmachnow", "part": "", "number": "1", "fwPlan": "0101000" },
-  "patient": { "firstName": "Felix", "lastName": "Förster" },
+  "patient": { "firstName": "Max", "lastName": "Mustermann" },
   "note": "Flammen weit sichtbar. Personen unklar.",
   "units": [
     { "radioId": "FL PM 01/44-01", "station": "PM FW Kleinmachnow", "name": "LF 20 RS Kleinmachnow", "alarmTime": null, "source": "keyword", "touched": false },

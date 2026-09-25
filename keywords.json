@@ -2,8 +2,8 @@
   "$schema": "./keywords.schema.json",
   "keywords": [
     {
+      "keyword": "B:Klein",
       "category": "B",
-      "subcategory": "Klein",
       "example": "Papierkorb, Container, Kontrolle nach Brand/Ereignis; keine Ausbreitungsgefahr",
       "blueLights": true,
       "vehicles": [
@@ -11,8 +11,8 @@
       ]
     },
     {
+      "keyword": "B:Pkw",
       "category": "B",
-      "subcategory": "Pkw",
       "example": "Pkw, Motorrad",
       "blueLights": true,
       "vehicles": [
@@ -20,8 +20,8 @@
       ]
     },
     {
+      "keyword": "B:Lkw",
       "category": "B",
-      "subcategory": "Lkw",
       "example": "Lkw, Bus, Traktor, Campinganhänger",
       "blueLights": true,
       "vehicles": [
@@ -31,8 +31,8 @@
       ]
     },
     {
+      "keyword": "B:Schornstein",
       "category": "B",
-      "subcategory": "Schornstein",
       "example": "Schornstein, Kamin, Esse",
       "blueLights": true,
       "vehicles": [
@@ -41,8 +41,8 @@
       ]
     },
     {
+      "keyword": "B:Gebäude-Klein",
       "category": "B",
-      "subcategory": "Gebäude-Klein",
       "example": "Garage, Schuppen, Bungalow, elektrische Anlage, Trafo",
       "blueLights": true,
       "vehicles": [
@@ -53,8 +53,8 @@
       ]
     },
     {
+      "keyword": "B:Gebäude-Groß",
       "category": "B",
-      "subcategory": "Gebäude-Groß",
       "example": "Zimmerbrand, Kellerbrand, Dachstuhlbrand, Landwirtschaftliches Anwesen, Wohnung",
       "blueLights": true,
       "vehicles": [
@@ -65,8 +65,8 @@
       ]
     },
     {
+      "keyword": "B:Sonderobjekt",
       "category": "B",
-      "subcategory": "Sonderobjekt",
       "example": "Sonderobjekt mit Objekt-AAO",
       "blueLights": true,
       "vehicles": [
@@ -75,8 +75,8 @@
       ]
     },
     {
+      "keyword": "B:BMA",
       "category": "B",
-      "subcategory": "BMA",
       "example": "örtliche Festlegung (Brandmeldeanlage)",
       "blueLights": true,
       "vehicles": [
@@ -86,8 +86,8 @@
       ]
     },
     {
+      "keyword": "B:Fläche",
       "category": "B",
-      "subcategory": "Fläche",
       "example": "Ödland, Wiese",
       "blueLights": true,
       "vehicles": [
@@ -96,8 +96,8 @@
       ]
     },
     {
+      "keyword": "B:Wald",
       "category": "B",
-      "subcategory": "Wald",
       "example": "Wald, Bahndamm",
       "blueLights": true,
       "vehicles": [
@@ -108,8 +108,8 @@
       ]
     },
     {
+      "keyword": "B:Wald Groß/WSP",
       "category": "B",
-      "subcategory": "Wald Groß/WSP",
       "example": "Wald, Getreidefeld",
       "blueLights": true,
       "vehicles": [
@@ -120,8 +120,8 @@
       ]
     },
     {
+      "keyword": "B:Schiene",
       "category": "B",
-      "subcategory": "Schiene",
       "blueLights": true,
       "vehicles": [
         "FL PM 01/11-01",
@@ -129,8 +129,8 @@
       ]
     },
     {
+      "keyword": "B:Boot",
       "category": "B",
-      "subcategory": "Boot",
       "example": "Sport- und Freizeitboote",
       "blueLights": true,
       "vehicles": [
@@ -139,8 +139,8 @@
       ]
     },
     {
+      "keyword": "B:Schiff",
       "category": "B",
-      "subcategory": "Schiff",
       "example": "Schiff, Transportschiff, Fahrgastschiff",
       "blueLights": true,
       "vehicles": [
@@ -150,25 +150,16 @@
       ]
     },
     {
+      "keyword": "B:Gefahrgut",
       "category": "B",
-      "subcategory": "Gefahrgut",
       "blueLights": true,
       "vehicles": [
         "FL PM 01/44-01"
       ]
     },
     {
+      "keyword": "B:Kleinflugzeug",
       "category": "B",
-      "subcategory": "Kleinflugzeug",
-      "blueLights": true,
-      "vehicles": [
-        "FL PM 01/11-01",
-        "FL PM 01/44-01"
-      ]
-    },
-    {
-      "category": "B",
-      "subcategory": "Großflugzeug",
       "blueLights": true,
       "vehicles": [
         "FL PM 01/11-01",
@@ -176,8 +167,8 @@
       ]
     },
     {
+      "keyword": "B:Großflugzeug",
       "category": "B",
-      "subcategory": "Explosion",
       "blueLights": true,
       "vehicles": [
         "FL PM 01/11-01",
@@ -185,8 +176,17 @@
       ]
     },
     {
+      "keyword": "B:Explosion",
+      "category": "B",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/11-01",
+        "FL PM 01/44-01"
+      ]
+    },
+    {
+      "keyword": "H:Klein",
       "category": "H",
-      "subcategory": "Klein",
       "example": "Wasser in Keller, Baum auf Straße",
       "blueLights": true,
       "vehicles": [
@@ -194,8 +194,8 @@
       ]
     },
     {
+      "keyword": "H:Natur",
       "category": "H",
-      "subcategory": "Natur",
       "example": "Schäden durch witterungsbedingte Ereignisse",
       "blueLights": true,
       "vehicles": [
@@ -203,8 +203,8 @@
       ]
     },
     {
+      "keyword": "H:Hilfeleistung",
       "category": "H",
-      "subcategory": "Hilfeleistung",
       "example": "Ausleuchten von Einsatzstellen, Tragehilfe Rettungsdienst, Hubschrauberlandung, Transport RTH-Besatzung, Stromunfall",
       "blueLights": true,
       "vehicles": [
@@ -212,8 +212,8 @@
       ]
     },
     {
+      "keyword": "H:Türnotöffnung",
       "category": "H",
-      "subcategory": "Türnotöffnung",
       "example": "Hilflose Person",
       "blueLights": true,
       "vehicles": [
@@ -222,8 +222,8 @@
       ]
     },
     {
+      "keyword": "H:VU ohne P",
       "category": "H",
-      "subcategory": "VU ohne P",
       "example": "Unfall mit Blechschaden, auslaufende Flüssigkeiten",
       "blueLights": true,
       "vehicles": [
@@ -231,18 +231,17 @@
       ]
     },
     {
+      "keyword": "H:VU mit P",
       "category": "H",
-      "subcategory": "VU mit P",
       "example": "Unfall mit Verletzten, jedoch nicht eingeklemmt",
       "blueLights": true,
       "vehicles": [
-        "FL PM 01/11-01",
         "FL PM 01/43-01"
       ]
     },
     {
+      "keyword": "H:VU Klemm",
       "category": "H",
-      "subcategory": "VU Klemm",
       "example": "eingeklemmte Person",
       "blueLights": true,
       "vehicles": [
@@ -251,8 +250,8 @@
       ]
     },
     {
+      "keyword": "H:VU LKW/Bus",
       "category": "H",
-      "subcategory": "VU LKW/Bus",
       "example": "LKW-/Busunfall, LKW gegen PKW/LKW/BUS",
       "blueLights": true,
       "vehicles": [
@@ -261,8 +260,8 @@
       ]
     },
     {
+      "keyword": "H:VU Schiene",
       "category": "H",
-      "subcategory": "VU Schiene",
       "example": "Pkw gegen Zug, entgleister Zug, Zug gegen Zug",
       "blueLights": true,
       "vehicles": [
@@ -271,8 +270,8 @@
       ]
     },
     {
+      "keyword": "H:VU Schiff",
       "category": "H",
-      "subcategory": "VU Schiff",
       "example": "Schiffskollision, leckgeschlagenes Schiff, Transportschiff, Fahrgastschiff",
       "blueLights": true,
       "vehicles": [
@@ -282,8 +281,8 @@
       ]
     },
     {
+      "keyword": "H:Flugzeugunfall Klein",
       "category": "H",
-      "subcategory": "Flugzeugunfall Klein",
       "example": "Absturz Kleinflugzeug",
       "blueLights": true,
       "vehicles": [
@@ -291,8 +290,8 @@
       ]
     },
     {
+      "keyword": "H:Flugzeugunfall Groß",
       "category": "H",
-      "subcategory": "Flugzeugunfall Groß",
       "example": "Unfall mit Großflugzeug",
       "blueLights": true,
       "vehicles": [
@@ -300,8 +299,8 @@
       ]
     },
     {
+      "keyword": "H:Person auf Schiene",
       "category": "H",
-      "subcategory": "Person auf Schiene",
       "blueLights": true,
       "vehicles": [
         "FL PM 01/11-01",
@@ -309,8 +308,8 @@
       ]
     },
     {
+      "keyword": "H:Person im Wasser/Eis",
       "category": "H",
-      "subcategory": "Person im Wasser/Eis",
       "example": "Wasserrettung, eingebrochene Person in See",
       "blueLights": true,
       "vehicles": [
@@ -319,8 +318,8 @@
       ]
     },
     {
+      "keyword": "H:Rettung aus Höhen und Tiefen",
       "category": "H",
-      "subcategory": "Rettung aus Höhen und Tiefen",
       "example": "Bauunfall, Rettung aus Höhe, Rettung aus Schacht, Windkraftanlage",
       "blueLights": true,
       "vehicles": [
@@ -329,8 +328,8 @@
       ]
     },
     {
+      "keyword": "H:Gas",
       "category": "H",
-      "subcategory": "Gas",
       "example": "Gasgeruch, Gasaustritt",
       "blueLights": true,
       "vehicles": [
@@ -339,19 +338,19 @@
       ]
     },
     {
+      "keyword": "H:Gefahrgut-Klein",
       "category": "H",
-      "subcategory": "Gefahrgut-Klein",
       "example": "AAO durch Träger des BS bis Körperschutzform 1",
       "blueLights": true,
       "vehicles": [
         "FL PM 01/11-01",
-        "FL PM 01/43-01", 
+        "FL PM 01/43-01",
         "FL PM 01/44-01"
       ]
     },
     {
+      "keyword": "H:Gefahrgut-Groß",
       "category": "H",
-      "subcategory": "Gefahrgut-Groß",
       "example": "AAO durch Landkreis in Verbindung mit Träger des BS",
       "blueLights": true,
       "vehicles": [
@@ -361,8 +360,8 @@
       ]
     },
     {
+      "keyword": "H:Einsturz",
       "category": "H",
-      "subcategory": "Einsturz",
       "blueLights": true,
       "vehicles": [
         "FL PM 01/11-01",
@@ -371,16 +370,16 @@
       ]
     },
     {
+      "keyword": "H:Öl Land",
       "category": "H",
-      "subcategory": "Öl Land",
       "blueLights": true,
       "vehicles": [
         "FL PM 01/43-01"
       ]
     },
     {
+      "keyword": "H:Öl auf Wasser",
       "category": "H",
-      "subcategory": "Öl auf Wasser",
       "blueLights": true,
       "vehicles": [
         "FL PM 01/43-01",
@@ -388,8 +387,8 @@
       ]
     },
     {
+      "keyword": "H:Tier in Not",
       "category": "H",
-      "subcategory": "Tier in Not",
       "example": "Tier in Not, Not durch Tier",
       "blueLights": true,
       "vehicles": [
@@ -397,8 +396,8 @@
       ]
     },
     {
+      "keyword": "H:Kommunal",
       "category": "H",
-      "subcategory": "Kommunal",
       "example": "Einsätze im Auftrag des Trägers, Amtshilfe, BRASIWA, Notarztzubringer",
       "blueLights": true,
       "vehicles": [
@@ -406,14 +405,41 @@
       ]
     },
     {
+      "keyword": "H:Person-TMR",
       "category": "H",
-      "subcategory": "Person-TMR",
       "example": "Person in Not, Technische Menschenrettung",
       "blueLights": true,
       "vehicles": [
         "FL PM 01/11-01",
         "FL PM 01/43-01",
         "FL PM 01/44-01"
+      ]
+    },
+    {
+      "keyword": "R1N0",
+      "category": "R",
+      "example": "1 RTW ohne Notarzt; die Feuerwehr wird nur alarmiert, wenn in der Region kein regulärer RTW verfügbar ist",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/85-01"
+      ]
+    },
+    {
+      "keyword": "R1N1f",
+      "category": "R",
+      "example": "1 RTW + 1 NEF; First Responder bei möglicher Reanimation oder bewusstloser Person",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/85-01"
+      ]
+    },
+    {
+      "keyword": "R1N1p",
+      "category": "R",
+      "example": "1 RTW + 1 NEF; Polytrauma durch schweren mechanischen Verletzungsmechanismus",
+      "blueLights": true,
+      "vehicles": [
+        "FL PM 01/85-01"
       ]
     }
   ]

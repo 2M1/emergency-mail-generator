@@ -36,14 +36,17 @@ export function createEmergency({ now = new Date(), town = "" } = {}) {
 
 // ---------- keywords and units ----------
 
+/** The Alarmgrund as the Leitstelle sends it, e.g. "B:Gebäude-Groß" or "R1N1f". */
 export function keywordId(keyword) {
-  return `${keyword.category}:${keyword.subcategory}`;
+  return keyword.keyword;
 }
 
-/** "B" for "B:Gebäude-Groß", empty when there is no category. */
+/**
+ * The category of an Alarmgrund: "B" for "B:Gebäude-Groß", "R" for Rettungsdienst codes like
+ * "R1N1f" (see keywords.schema.json). Empty when the text follows neither form.
+ */
 export function keywordCategory(id) {
-  const index = (id ?? "").indexOf(":");
-  return index < 0 ? "" : id.slice(0, index);
+  return /^([A-Z]):\S/.exec(id ?? "")?.[1] ?? (/^R\d+N\d+/.test(id ?? "") ? "R" : "");
 }
 
 export function unitFromVehicle(vehicle, source = UNIT_SOURCE.manual) {

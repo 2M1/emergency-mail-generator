@@ -11,8 +11,8 @@ test("unknown and duplicate radio IDs are reported", () => {
   const problems = checkData(
     [{ radioId: "FL PM 01/44-01" }, { radioId: "FL PM 01/44-01" }],
     [
-      { category: "B", subcategory: "Klein", vehicles: ["FL PM 01/44-01", "FL PM 09/99-01", "FL PM 01/44-01"] },
-      { category: "B", subcategory: "Klein", vehicles: [] },
+      { keyword: "B:Klein", category: "B", vehicles: ["FL PM 01/44-01", "FL PM 09/99-01", "FL PM 01/44-01"] },
+      { keyword: "B:Klein", category: "B", vehicles: [] },
     ],
   );
   assert.deepEqual(problems, [

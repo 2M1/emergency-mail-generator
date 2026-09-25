@@ -1,12 +1,12 @@
 ~~Ort~~Brandenburg an der Havel~~
 
-~~Ortsteil~~Göttin/BRB~~
+~~Ortsteil~~Musterhöfe/BRB~~
 
-~~Ortslage~~Görisgräben~~
+~~Ortslage~~Übungsweg~~
 
-~~Strasse~~Görisgräben~~
+~~Strasse~~Übungsweg~~
 
-~~Hausnummer~~22~~
+~~Hausnummer~~1~~
 
 ~~Objekt~~~~
 
@@ -22,7 +22,7 @@
 
 ~~Sondersignal~~ohne Sondersignal~~
 
-~~Einsatznummer~~322088295~~
+~~Einsatznummer~~300000001~~
 
 ~~Besonderheiten~~TESTETESTTESTE~~
 
@@ -38,12 +38,12 @@
 
 ~~ALARM~~unbekannt#~~BRB FW Brandenburg 1ø~~RLS BRB DGL 2~~08:23~~~~
 
-~~WGS84_X~~52.33823333~~
+~~WGS84_X~~52.00000000~~
 
-~~WGS84_Y~~12.48626667~~
+~~WGS84_Y~~12.50000000~~
 
-~~Koord_EPSG_25833~~12.48626667~~52.33823333~~
+~~Koord_EPSG_25833~~12.50000000~~52.00000000~~
 
-~~Koord_EPSG_4326~~E1248630~~N5233820~~~~Einsatzortzusatz~~~~
+~~Koord_EPSG_4326~~E1250000~~N5200000~~~~Einsatzortzusatz~~~~
 
-~~Alarmzeit~~29.09.22&08:23~~
+~~Alarmzeit~~01.04.22&08:23~~

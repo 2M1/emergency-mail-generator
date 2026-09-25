@@ -6,6 +6,7 @@ import {
   createEmergency,
   customUnit,
   fileBaseName,
+  keywordCategory,
   loadDraft,
   missingFields,
   normalizeEmergency,
@@ -57,6 +58,25 @@ test("switching keywords replaces untouched keyword units and keeps manual and e
   // B:Klein lists 44-01 too, so that unit stays where it is.
   const bKlein = applyKeyword(state, findKeyword("B:Klein"), vehiclesById);
   assert.deepEqual(radioIds(bKlein), ["FL PM 01/44-01", "FL PM 01/36-01", "FL PM 03/44-01"]);
+});
+
+test("Rettungsdienst keywords add the First Responder vehicle with Sondersignal", () => {
+  for (const id of ["R1N0", "R1N1f", "R1N1p"]) {
+    const state = applyKeyword({ ...start(), blueLights: false }, findKeyword(id), vehiclesById);
+    assert.equal(state.keyword, id);
+    assert.equal(state.blueLights, true, id);
+    assert.deepEqual(radioIds(state), ["FL PM 01/85-01"], id);
+  }
+});
+
+test("the category comes from the Alarmgrund in both notations", () => {
+  assert.equal(keywordCategory("B:Gebäude-Groß"), "B");
+  assert.equal(keywordCategory("H:VU mit P"), "H");
+  assert.equal(keywordCategory("R1N1f"), "R");
+  assert.equal(keywordCategory("R2N0"), "R");
+  assert.equal(keywordCategory("B:"), "");
+  assert.equal(keywordCategory("Rettung"), "");
+  assert.equal(keywordCategory(""), "");
 });
 
 test("a keyword doesn't add a vehicle that is already in the list", () => {

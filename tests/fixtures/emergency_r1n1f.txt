@@ -1,0 +1,27 @@
+~~Ort~~Kleinmachnow~~
+~~Ortsteil~~Kleinmachnow~~
+~~Ortslage~~~~
+~~Strasse~~Musterstraße~~
+~~Hausnummer~~1~~
+~~Objekt~~~~
+~~FWPlan~~~~
+~~Objektteil~~~~
+~~Objektnummer~~-1~~
+~~Einsatzart~~Rettungseinsatz~~
+~~Alarmgrund~~R1N1f~~
+~~Sondersignal~~mit Sondersignal~~
+~~Einsatznummer~~300000004~~
+~~Besonderheiten~~Testeinsatz...akut~~
+~~Name~~Mustermann,~~
+~~EMListe~~RT PM 03/82-01, RT PM 03/83-04~~
+~~Status~~Tableau-Adresse~~Wache~~Fahrzeug~~Alarmiert~~Ausgerückt~~
+~~ALARM~~unbekannt#~~PM RW Teltowø~~RT PM 03/82-01~~11:59~~~~
+~~ALARM~~unbekannt#~~PM RW Teltowø~~RT PM 03/83-04~~11:59~~11:59~~
+~~ALARM~~unbekannt#~~PM FW Kleinmachnowø~~FR Kleinmachnow~~12:00~~~~
+~~ALARM~~unbekannt#~~PM FW Kleinmachnowø~~FL PM 01/85-01~~~~~~
+~~WGS84_X~~52.00000000~~
+~~WGS84_Y~~13.00000000~~
+~~Koord_EPSG_25833~~13.00000000~~52.00000000~~
+~~Koord_EPSG_4326~~E130000~~N520000~~
+~~Einsatzortzusatz~~EFH~~
+~~Alarmzeit~~01.01.26&12:00~~

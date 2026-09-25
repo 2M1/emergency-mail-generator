@@ -21,6 +21,6 @@ export const measure = measureFromBytes(assets);
 export const vehicles = readJson("vehicles.json").vehicles;
 export const keywords = readJson("keywords.json").keywords;
 export const vehiclesById = new Map(vehicles.map((v) => [v.radioId, v]));
-export const findKeyword = (id) => keywords.find((k) => `${k.category}:${k.subcategory}` === id);
+export const findKeyword = (id) => keywords.find((k) => k.keyword === id);
 
 export const LAYOUT_OPTIONS = { headerLines: ["Feuerwehr", "Kleinmachnow"], ownOrganisation: "Kleinmachnow" };

@@ -9,11 +9,25 @@ Reference plan for building the website described in [CLAUDE.md](CLAUDE.md). It 
 | Topic | Decision |
 |---|---|
 | Keyword spelling | "Klein"/"Groß" are capitalized, as in the Leitstelle's `B:Gebäude-Groß`. `keywords.json` is the source of truth and is written into the mail unchanged. |
+| Keyword format | Each entry has an explicit `keyword` (the Alarmgrund exactly as sent) and a `category`: `B` and `H` use `B:…`/`H:…`, Rettungsdienst (`R`) uses codes without a colon (see [Rettungsdienst keywords](#rettungsdienst-keywords)). The schema checks that keyword and category fit. |
+| Anonymisation | Test fixtures and docs only contain anonymised data: no real names, addresses, Einsatznummern, coordinates or symptoms. Real mails are anonymised before they are written anywhere. |
 | PDF fidelity | Follow the Rust layout, but it doesn't have to be a 1:1 replica. Known Rust bugs are fixed (see [Deviations from the Rust PDF](#deviations-from-the-rust-pdf)). |
 | Patient | Two input fields: Vorname and Nachname. |
 | Coordinates | Left out for now: no form fields and no `WGS84_*`/`Koord_*` lines in the mail. |
 | County codes | `vehicles.schema.json` allows radio IDs with 1–3 letter counties (`FL P …`, `FL PM …`, `FL BRB …`). |
 | Hosting | Static files only (GitHub Pages). No server, no build step. |
+
+### Rettungsdienst keywords
+
+Format `R<RTWs>N<NEFs><suffix>`: the number of RTWs and of NEFs (emergency doctors) responding, plus an optional lowercase suffix.
+
+| Keyword | Meaning |
+|---|---|
+| `R1N0` | Normal RTW emergency without a doctor. The fire department is only alarmed when no regular RTW is available in the region. |
+| `R1N1f` | First Responder: possible resuscitation or unconscious patient. |
+| `R1N1p` | Polytrauma from a severe mechanical injury mechanism. |
+
+All R keywords default to Sondersignal and to `FL PM 01/85-01` (RTW FR Kleinmachnow).
 
 ### Open points
 
@@ -36,8 +50,8 @@ The line format that `../emergency_mail/src/models/emergency_parsing.rs` reads: 
 | `FWPlan` | object.fwPlan | empty allowed |
 | `Objektteil` | object.part | empty allowed |
 | `Objektnummer` | object.number | integer, `-1` when empty |
-| `Einsatzart` | keyword category | `B` → `Brandeinsatz`, `H` → `Hilfeleistungseinsatz` |
-| `Alarmgrund` | keyword | `<category>:<subcategory>`, e.g. `B:Gebäude-Groß` |
+| `Einsatzart` | keyword category | `B` → `Brandeinsatz`, `H` → `Hilfeleistungseinsatz`, `R` → `Rettungseinsatz` |
+| `Alarmgrund` | keyword | the `keyword` from `keywords.json`, e.g. `B:Gebäude-Groß` or `R1N1f` |
 | `Sondersignal` | blueLights | `mit Sondersignal` / `ohne Sondersignal` |
 | `Einsatznummer` | number | digits |
 | `Besonderheiten` | note | newlines kept (the parser reads up to the next `~`) |
@@ -50,6 +64,10 @@ The line format that `../emergency_mail/src/models/emergency_parsing.rs` reads: 
 
 - With no units, write a single empty row, `~~ALARM~~#~~ø~~~~~~`, as real mails do (`../emergency_mail/examples/emergency_obj.txt`).
 - Units without a radio ID (a row still being typed) are left out of the mail and the PDF.
+- Real Rettungsdienst mails (`tests/fixtures/emergency_r1n1f.txt`, anonymised) differ in three ways the importer handles:
+  - The ALARM table can contain `FR Kleinmachnow`. That is the fire department's name in the EMS dispatch, not a radio ID; the vehicle itself is `FL PM 01/85-01`, and its Wache stays `PM FW Kleinmachnow`.
+  - A unit can have an empty alarm time. The importer treats it as "follows the emergency time".
+  - EMListe can list only some of the units. The generator still writes every unit into both EMListe and ALARM, as `CLAUDE.md` requires.
 - The trailing `ø` after the Wache and `unbekannt#` in the first column copy the real Leitstelle format. The Rust parser strips the `ø`.
 - A unit's ALARM time is its own override if set, otherwise the emergency's alarm time (`HH:MM`).
 - `~` is removed from every input value because it is the field delimiter.
@@ -72,7 +90,7 @@ Example:
 ~~Sondersignal~~mit Sondersignal~~
 ~~Einsatznummer~~12341234~~
 ~~Besonderheiten~~Flammen weit sichtbar. Personen unklar.~~
-~~Name~~Förster,Felix~~
+~~Name~~Mustermann,Max~~
 ~~EMListe~~FL PM 01/11-01, FL PM 01/44-01~~
 ~~Status~~Tableau-Adresse~~Wache~~Fahrzeug~~Alarmiert~~Ausgerückt~~
 ~~ALARM~~unbekannt#~~PM FW Kleinmachnowø~~FL PM 01/44-01~~19:10~~~~
@@ -192,7 +210,7 @@ package.json       dev/test tools only; not needed for hosting
 
 ```js
 {
-  keyword: "B:Gebäude-Groß",          // `${category}:${subcategory}` from keywords.json
+  keyword: "B:Gebäude-Groß",          // `keyword` from keywords.json, e.g. also "R1N1f"
   blueLights: true,
   number: "12341234",
   alarmTime: "2026-07-08T19:10",      // local time, minute precision

@@ -15,7 +15,7 @@ import {
   updateUnit,
 } from "./state.js";
 
-const KEYWORD_GROUPS = { B: "Brand", H: "Technische Hilfeleistung" };
+const KEYWORD_GROUPS = { B: "Brand", H: "Technische Hilfeleistung", R: "Rettungsdienst" };
 const VEHICLE_GROUPS = {
   vehicle: "Fahrzeuge",
   trailer: "Anhänger",

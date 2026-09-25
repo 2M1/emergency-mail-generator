@@ -13,7 +13,7 @@ The current emergency is saved in the browser as a draft. **Neuer Einsatz** star
 
 ## Data
 
-- `keywords.json`: Stichworte with Sondersignal default and default vehicles (radio IDs). Schema: `keywords.schema.json`.
+- `keywords.json`: Stichworte with Sondersignal default and default vehicles (radio IDs). `keyword` is the Alarmgrund exactly as the Leitstelle sends it (`B:Gebäude-Groß`, `H:VU Klemm`, `R1N1f`), `category` is `B`, `H` or `R`. Schema: `keywords.schema.json`.
 - `vehicles.json`: radio IDs with name, Wache, category and crew. Schema: `vehicles.schema.json`.
 
 The page loads both files at runtime, so changing them only needs a push. The pipeline checks them against the schemas and makes sure every radio ID in `keywords.json` exists in `vehicles.json`.

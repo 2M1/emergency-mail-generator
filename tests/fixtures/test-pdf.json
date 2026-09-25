@@ -18,8 +18,8 @@
     "fwPlan": "0101000"
   },
   "patient": {
-    "firstName": "Felix",
-    "lastName": "Förster"
+    "firstName": "Max",
+    "lastName": "Mustermann"
   },
   "note": "Flammen weit sichtbar. Personen unklar.",
   "units": [
