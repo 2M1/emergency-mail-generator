@@ -36,6 +36,7 @@
       "example": "Schornstein, Kamin, Esse",
       "blueLights": true,
       "vehicles": [
+        "FL PM 01/11-01",
         "FL PM 01/44-01",
         "FL PM 01/36-01"
       ]
@@ -70,6 +71,7 @@
       "example": "Sonderobjekt mit Objekt-AAO",
       "blueLights": true,
       "vehicles": [
+        "FL PM 01/11-01",
         "FL PM 01/44-01",
         "FL PM 01/36-01"
       ]
@@ -116,7 +118,8 @@
         "FL PM 01/11-01",
         "FL PM 01/24-01",
         "FL PM 01/43-01",
-        "FL PM 01/44-01"
+        "FL PM 01/44-01",
+        "FL PM 01/59-01"
       ]
     },
     {
@@ -125,6 +128,7 @@
       "blueLights": true,
       "vehicles": [
         "FL PM 01/11-01",
+        "FL PM 01/24-01",
         "FL PM 01/44-01"
       ]
     },
@@ -134,6 +138,7 @@
       "example": "Sport- und Freizeitboote",
       "blueLights": true,
       "vehicles": [
+        "FL PM 01/43-01",
         "FL PM 01/44-01",
         "FL PM 01/79-01"
       ]
@@ -145,6 +150,7 @@
       "blueLights": true,
       "vehicles": [
         "FL PM 01/11-01",
+        "FL PM 01/43-01",
         "FL PM 01/44-01",
         "FL PM 01/79-01"
       ]
@@ -154,7 +160,10 @@
       "category": "B",
       "blueLights": true,
       "vehicles": [
-        "FL PM 01/44-01"
+        "FL PM 01/11-01",
+        "FL PM 01/43-01",
+        "FL PM 01/44-01",
+        "FL PM 01/59-01"
       ]
     },
     {
@@ -172,7 +181,11 @@
       "blueLights": true,
       "vehicles": [
         "FL PM 01/11-01",
-        "FL PM 01/44-01"
+        "FL PM 01/24-01",
+        "FL PM 01/42-01",
+        "FL PM 01/43-01",
+        "FL PM 01/44-01",
+        "FL PM 01/59-01"
       ]
     },
     {
@@ -181,7 +194,10 @@
       "blueLights": true,
       "vehicles": [
         "FL PM 01/11-01",
-        "FL PM 01/44-01"
+        "FL PM 01/36-01",
+        "FL PM 01/43-01",
+        "FL PM 01/44-01",
+        "FL PM 01/59-01"
       ]
     },
     {
@@ -246,7 +262,9 @@
       "blueLights": true,
       "vehicles": [
         "FL PM 01/11-01",
-        "FL PM 01/43-01"
+        "FL PM 01/43-01",
+        "FL PM 01/44-01"
+
       ]
     },
     {
@@ -256,7 +274,8 @@
       "blueLights": true,
       "vehicles": [
         "FL PM 01/11-01",
-        "FL PM 01/43-01"
+        "FL PM 01/43-01",
+        "FL PM 01/44-01"
       ]
     },
     {
@@ -277,6 +296,7 @@
       "vehicles": [
         "FL PM 01/11-01",
         "FL PM 01/43-01",
+        "FL PM 01/44-01",
         "FL PM 01/79-01"
       ]
     },
@@ -286,6 +306,7 @@
       "example": "Absturz Kleinflugzeug",
       "blueLights": true,
       "vehicles": [
+        "FL PM 01/11-01",
         "FL PM 01/43-01"
       ]
     },
@@ -295,7 +316,12 @@
       "example": "Unfall mit Großflugzeug",
       "blueLights": true,
       "vehicles": [
-        "FL PM 01/43-01"
+        "FL PM 01/11-01",
+        "FL PM 01/42-01",
+        "FL PM 01/43-01",
+        "FL PM 01/44-01",
+        "FL PM 01/59-01",
+        "FL PM 01/85-01"
       ]
     },
     {
@@ -356,7 +382,8 @@
       "vehicles": [
         "FL PM 01/11-01",
         "FL PM 01/43-01",
-        "FL PM 01/44-01"
+        "FL PM 01/44-01",
+        "FL PM 01/59-01"
       ]
     },
     {
@@ -366,6 +393,7 @@
       "vehicles": [
         "FL PM 01/11-01",
         "FL PM 01/43-01",
+        "FL PM 01/44-01",
         "FL PM 01/36-01"
       ]
     },
